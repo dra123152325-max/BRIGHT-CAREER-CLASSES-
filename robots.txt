@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dra123152325-max.github.io/BRIGHT-CAREER-CLASSES-/sitemap.xml
