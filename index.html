@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bright Career Class</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f4f6fb;
+}
+
+/* HEADER */
+header{
+  background:#0b3c5d;
+  color:white;
+  padding:15px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+header img{
+  height:50px;
+  border-radius:50%;
+}
+
+header h1{
+  font-size:22px;
+  margin:0;
+}
+
+/* 3 DOT MENU */
+.menu{
+  font-size:26px;
+  cursor:pointer;
+}
+
+.dropdown{
+  position:absolute;
+  right:10px;
+  top:70px;
+  background:white;
+  width:220px;
+  box-shadow:0 0 10px rgba(0,0,0,0.2);
+  display:none;
+  z-index:99;
+}
+
+.dropdown a{
+  display:block;
+  padding:12px;
+  text-decoration:none;
+  color:#333;
+  border-bottom:1px solid #ddd;
+}
+
+.dropdown a:hover{
+  background:#f1f1f1;
+}
+
+/* SECTIONS */
+section{
+  padding:25px;
+}
+
+.big-text{
+  font-size:24px;
+  font-weight:bold;
+  text-align:center;
+  color:#0b3c5d;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  margin:15px 0;
+  border-radius:10px;
+  box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+/* ADMIN */
+.hidden{display:none;}
+.admin-only{display:none;}
+.admin-only.active{display:block;}
+
+input,select,button{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  font-size:16px;
+}
+
+button{
+  background:#0b3c5d;
+  color:white;
+  border:none;
+  border-radius:5px;
+}
+
+/* WHATSAPP FLOAT */
+.whatsapp{
+  position:fixed;
+  right:15px;
+  bottom:90px;
+  background:#25d366;
+  color:white;
+  padding:12px 15px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:bold;
+  animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(37,211,102,.7);}
+  70%{box-shadow:0 0 0 15px rgba(37,211,102,0);}
+  100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}
+}
+
+/* CALL BUTTON */
+.call{
+  position:fixed;
+  right:15px;
+  bottom:30px;
+  background:#007bff;
+  color:white;
+  padding:12px 18px;
+  border-radius:50px;
+  text-decoration:none;
+}
+
+/* FEE TABLE */
+.fee-table-wrap {
+  overflow-x: auto;
+}
+
+.fee-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.fee-table th, .fee-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  font-size: 16px;
+}
+
+.fee-table thead th {
+  background: #0b3c5d;
+  color: white;
+  font-weight: 600;
+}
+
+.fee-table tbody tr:hover {
+  background: #f7f9fc;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <img src="bcc.png" alt="Logo">
+  <h1>BRIGHT CAREER CLASS</h1>
+  <div class="menu" onclick="toggleMenu()">⋮</div>
+</header>
+
+<div class="dropdown" id="menu">
+  <a href="#home">🏠 Home</a>
+  <a href="#about">ℹ About</a>
+  <a href="#subjects">📚 Subjects</a>
+  <a href="#fees">💰 Fees</a>
+  <a href="#admin">🔐 Admin Login</a>
+</div>
+
+<section id="home">
+  <div class="big-text">
+    Welcome to Bright Career Class  
+    <br>“Success begins with the right guidance”
+  </div>
+</section>
+
+<section id="about" class="card">
+  <h2>About Us</h2>
+  <p>
+    Bright Career Class is committed to quality education and strong foundations.
+    We focus on concept clarity, discipline and student growth.
+  </p>
+  <p><b>Director:</b> Deepak Rai (Amit Rai)</p>
+  <p><b>Contact:</b> 9140466780</p>
+  <p>
+    <b>Instagram:</b> 📷 
+    <a href="https://www.instagram.com/brightcareerclasses0701?igsh=MTdyZTM2ODRwN2c5aw==" target="_blank">
+      @brightcareerclasses0701
+    </a>
+  </p>
+  <p>
+    <b>YouTube:</b> ▶️ 
+    <a href="https://www.youtube.com/@BrightCareerClasses-1" target="_blank">
+      @BrightCareerClasses-1
+    </a>
+  </p>
+  <p>
+    <b>Email:</b> ✉️ 
+    <a href="mailto:brightclasses78@gmail.com">
+      brightclasses78@gmail.com
+    </a>
+  </p>
+</section>
+
+<section id="subjects" class="card">
+  <h2>Subjects (Class 6–12)</h2>
+  Maths, English, Hindi, Science, Social Science
+</section>
+
+<section id="fees" class="card">
+  <h2>Fees Structure (Per Month)</h2>
+  <div class="fee-table-wrap">
+    <table class="fee-table">
+      <thead>
+        <tr>
+          <th>Board</th>
+          <th>Class</th>
+          <th>Fee</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- CBSE -->
+        <tr><td>CBSE</td><td>6–8</td><td>₹800</td></tr>
+        <tr><td>CBSE</td><td>9</td><td>₹1,000</td></tr>
+        <tr><td>CBSE</td><td>10</td><td>₹1,200</td></tr>
+        <tr><td>CBSE</td><td>11</td><td>₹1,500</td></tr>
+        <tr><td>CBSE</td><td>12</td><td>₹1,800</td></tr>
+
+        <!-- ICSE/ISC -->
+        <tr><td>ICSE/ISC</td><td>6</td><td>₹800</td></tr>
+        <tr><td>ICSE/ISC</td><td>7</td><td>₹900</td></tr>
+        <tr><td>ICSE/ISC</td><td>8</td><td>₹1,000</td></tr>
+        <tr><td>ICSE/ISC</td><td>9</td><td>₹1,200</td></tr>
+        <tr><td>ICSE/ISC</td><td>10</td><td>₹1,500</td></tr>
+        <tr><td>ICSE/ISC</td><td>11</td><td>₹1,800</td></tr>
+        <tr><td>ICSE/ISC</td><td>12</td><td>₹2,100</td></tr>
+
+        <!-- UP Board -->
+        <tr><td>UP Board</td><td>6–8</td><td>₹600</td></tr>
+        <tr><td>UP Board</td><td>9–10</td><td>₹800</td></tr>
+        <tr><td>UP Board</td><td>11–12</td><td>₹1,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ADMISSION FORM -->
+<section id="admission" class="card">
+  <h2>Admission Form</h2>
+  <form onsubmit="addAdmission(event)">
+    <input type="text" id="stuName" placeholder="Student Name" required>
+    <select id="stuClass" required>
+      <option value="">Select Class</option>
+      <option>6</option><option>7</option><option>8</option>
+      <option>9</option><option>10</option><option>11</option><option>12</option>
+    </select>
+    <select id="stuBoard" required>
+      <option value="">Select Board</option>
+      <option>CBSE</option><option>ICSE/ISC</option><option>UP Board</option>
+    </select>
+    <input type="tel" id="stuPhone" placeholder="Phone Number" required>
+    <button type="submit">Submit Admission</button>
+  </form>
+</section>
+
+<!-- ADMIN LOGIN -->
+<section id="admin" class="card">
+  <h2>Admin Login</h2>
+  <input type="password" id="adminPass" placeholder="Admin Password">
+  <span onclick="togglePass()">👁 Show / Hide</span>
+  <button onclick="login()">Login</button>
+  <p><a href="#" onclick="forgotPassword()">🔐 Forgot Password</a></p>
+  <div id="otpBox" class="hidden">
+    <input type="number" id="otpInput" placeholder="Enter OTP">
+    <button onclick="verifyOTP()">Verify OTP</button>
+  </div>
+</section>
+
+<!-- ADMIN PANEL -->
+<section class="card admin-only" id="panel">
+  <h2>Admin Dashboard</h2>
+  <button onclick="logout()">Logout</button>
+</section>
+
+<!-- FLOATING BUTTONS -->
+<a class="whatsapp" id="wa"
+href="https://wa.me/919140466780?text=Hello%20Bright%20Career%20Class,%20I%20want%20admission"
+onclick="stopAnim()">Admission on WhatsApp</a>
+
+<a class="call" href="tel:9140466780">📞 Call</a>
+
+<script>
+let adminPassword="amit6204";
+let generatedOTP="";
+
+function toggleMenu(){
+  let m=document.getElementById("menu");
+  m.style.display=m.style.display==="block"?"none":"block";
+}
+
+function togglePass(){
+  let p=document.getElementById("adminPass");
+  p.type=p.type==="password"?"text":"password";
+}
+
+function login(){
+  if(adminPass.value===adminPassword){
+    document.querySelector(".admin-only").classList.add("active");
+    alert("Login Successful");
+  }else{
+    alert("Wrong password");
+  }
+}
+
+function logout(){
+  document.querySelector(".admin-only").classList.remove("active");
+}
+
+function forgotPassword(){
+  generatedOTP=Math.floor(100000+Math.random()*900000);
+  alert("OTP sent (Demo): "+generatedOTP);
+  otpBox.classList.remove("hidden");
+}
+
+function verifyOTP(){
+if(otpInput.value==generatedOTP){
+    let np=prompt("Enter new password");
+    if(np){adminPassword=np;alert("Password changed");}
+    otpBox.classList.add("hidden");
+  }else{
+    alert("Wrong OTP");
+  }
+}
+
+function stopAnim(){
+  document.getElementById("wa").style.animation="none";
+}
+</script>
+
+</body>
+</html>
