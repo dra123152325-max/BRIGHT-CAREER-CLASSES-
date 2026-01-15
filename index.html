@@ -531,6 +531,37 @@ button:hover{background:#09314b}
     <hr>
     <h3 style="color:#0b3c5d;">Admissions List</h3>
     <div id="records">No admissions yet</div>
+<div class="card" id="adminPanel" style="display:none;">
+  <h2>Admin Dashboard</h2>
+
+  <hr>
+  <h3>Admissions List</h3>
+  <div id="records">No admissions yet</div>
+
+  <!-- ✅ PASTE FEES EDIT OPTION HERE -->
+  <hr>
+  <h3>Edit Fees (Admin)</h3>
+
+  <select id="feeBoard">
+    <option value="CBSE">CBSE</option>
+    <option value="ICSE/ISC">ICSE/ISC</option>
+    <option value="UP BOARD">UP BOARD</option>
+  </select>
+
+  <select id="feeClass">
+    <option value="6">Class 6</option>
+    <option value="7">Class 7</option>
+    <option value="8">Class 8</option>
+    <option value="9">Class 9</option>
+    <option value="10">Class 10</option>
+    <option value="11">Class 11</option>
+    <option value="12">Class 12</option>
+  </select>
+
+  <input id="feeAmount" type="number" placeholder="Enter New Fee Amount (₹)">
+  <button onclick="adminUpdateFee()">Update Fee</button>
+
+</div>
 
     <hr>
     <h3 style="color:#0b3c5d;">Edit Fees (Admin)</h3>
@@ -827,6 +858,7 @@ refreshFeeText();
 
 </body>
 </html>
+
 
 
 
