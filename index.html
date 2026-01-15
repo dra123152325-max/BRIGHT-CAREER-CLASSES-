@@ -537,6 +537,28 @@ button:hover{background:#09314b}
   <hr>
   <h3>Admissions List</h3>
   <div id="records">No admissions yet</div>
+<hr>
+<h3>Edit Fees (Admin)</h3>
+
+<select id="feeBoard">
+  <option value="CBSE">CBSE</option>
+  <option value="ICSE/ISC">ICSE/ISC</option>
+  <option value="UP BOARD">UP BOARD</option>
+</select>
+
+<select id="feeClass">
+  <option value="6">Class 6</option>
+  <option value="7">Class 7</option>
+  <option value="8">Class 8</option>
+  <option value="9">Class 9</option>
+  <option value="10">Class 10</option>
+  <option value="11">Class 11</option>
+  <option value="12">Class 12</option>
+</select>
+
+<input id="feeAmount" type="number" placeholder="Enter New Fee Amount (₹)">
+<button onclick="adminUpdateFee()">✅ Update Fee</button>
+<p id="feeMsg" style="color:green;font-weight:700;"></p>
 
   <!-- ✅ PASTE FEES EDIT OPTION HERE -->
   <hr>
@@ -853,11 +875,71 @@ document.addEventListener("click", function(e){
 });
 
 /* On load */
-refreshFeeText();
+refreshFeeText();  
+  function adminUpdateFee(){
+  const board = document.getElementById("feeBoard").value;
+  const cls = document.getElementById("feeClass").value;
+  const amount = parseInt(document.getElementById("feeAmount").value, 10);
+
+  if(!amount || amount < 1){
+    alert("❌ Enter valid fee amount");
+    return;
+  }
+
+  let fees = JSON.parse(localStorage.getItem("feesData") || "null");
+
+  // अगर feesData पहली बार नहीं है तो default create कर दो
+  if(!fees){
+    fees = {
+      cbse_6_8: 800, cbse_9: 1000, cbse_10: 1200, cbse_11: 1500, cbse_12: 1800,
+      icse_6: 800, icse_7: 900, icse_8: 1000, icse_9: 1200, icse_10: 1500, icse_11: 1800, icse_12: 2100,
+      up_6_8: 600, up_9_10: 800, up_11_12: 1000
+    };
+  }
+
+  // ✅ Fee update logic
+  if(board === "CBSE"){
+    if(["6","7","8"].includes(cls)) fees.cbse_6_8 = amount;
+    if(cls === "9") fees.cbse_9 = amount;
+    if(cls === "10") fees.cbse_10 = amount;
+    if(cls === "11") fees.cbse_11 = amount;
+    if(cls === "12") fees.cbse_12 = amount;
+  }
+
+  if(board === "ICSE/ISC"){
+    if(cls === "6") fees.icse_6 = amount;
+    if(cls === "7") fees.icse_7 = amount;
+    if(cls === "8") fees.icse_8 = amount;
+    if(cls === "9") fees.icse_9 = amount;
+    if(cls === "10") fees.icse_10 = amount;
+    if(cls === "11") fees.icse_11 = amount;
+    if(cls === "12") fees.icse_12 = amount;
+  }
+
+  if(board === "UP BOARD"){
+    if(["6","7","8"].includes(cls)) fees.up_6_8 = amount;
+    if(["9","10"].includes(cls)) fees.up_9_10 = amount;
+    if(["11","12"].includes(cls)) fees.up_11_12 = amount;
+  }
+
+  localStorage.setItem("feesData", JSON.stringify(fees));
+
+  // ✅ Show message
+  const msg = document.getElementById("feeMsg");
+  if(msg) msg.innerText = "✅ Fee Updated Successfully!";
+
+  // ✅ अगर तुम्हारे page में fee show करने वाला function है तो call कर दो
+  if(typeof refreshFeeText === "function") refreshFeeText();
+  if(typeof updateFeePreview === "function") updateFeePreview();
+
+  alert("✅ Fee Updated Successfully!");
+}
+
 </script>
 
 </body>
 </html>
+
 
 
 
