@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bright Career Class</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#f4f6fb}
+
+/* HEADER */
+header{
+  background:#0b3c5d;color:#fff;padding:15px;
+  display:flex;align-items:center;justify-content:space-between;position:relative
+}
+header .left{display:flex;align-items:center;gap:12px}
+header img{width:55px;height:55px;border-radius:50%;background:#fff;padding:3px}
+header h1{font-size:18px;margin:0;line-height:1.2}
+header p{margin:0;font-size:12px;opacity:.95}
+.menu-btn{
+  font-size:26px;cursor:pointer;background:rgba(255,255,255,0.15);
+  width:42px;height:42px;border-radius:50%;text-align:center;line-height:42px
+}
+
+/* 3 DOT MENU */
+.dropdown{
+  position:absolute;right:12px;top:70px;background:#fff;width:240px;
+  box-shadow:0 0 10px rgba(0,0,0,.25);display:none;z-index:999;border-radius:10px;overflow:hidden
+}
+.dropdown a{
+  display:block;padding:12px;text-decoration:none;color:#333;
+  border-bottom:1px solid #eee;font-weight:bold
+}
+.dropdown a:hover{background:#f3f3f3}
+
+/* SECTIONS */
+section{padding:20px}
+.card{
+  background:#fff;padding:20px;border-radius:12px;
+  box-shadow:0 0 10px rgba(0,0,0,.10);margin:15px auto;max-width:980px
+}
+.big-title{font-size:26px;font-weight:bold;text-align:center;color:#0b3c5d}
+.moti{text-align:center;font-size:18px;margin-top:10px;line-height:1.6}
+hr{border:none;border-top:1px solid #eee;margin:15px 0}
+
+/* INPUTS */
+input,select,textarea,button{
+  width:100%;padding:11px;margin:8px 0;font-size:16px;
+  border-radius:8px;border:1px solid #ddd;box-sizing:border-box
+}
+button{
+  background:#0b3c5d;color:#fff;border:none;cursor:pointer;font-weight:bold;border-radius:8px
+}
+button:hover{background:#09314b}
+.small-btn{background:#1c6ea4}
+.small-btn:hover{background:#144e75}
+.danger-btn{background:#e74c3c}
+.danger-btn:hover{background:#c0392b}
+.hidden{display:none}
+
+/* SECTION TITLE */
+.section-title{
+  text-align:center;
+  color:#0b3c5d;
+  margin:0 0 10px;
+  font-size:22px;
+}
+
+/* FEES STYLE */
+.fee-box h3{margin-bottom:6px;color:#0b3c5d}
+.fee-box ul{margin:8px 0 15px 18px}
+.fee-box li{margin:6px 0;font-size:16px}
+
+/* SOCIAL ICON LINKS */
+.social-box{text-align:center;margin-top:15px}
+.social-box h3{color:#0b3c5d;margin-bottom:12px}
+.social-link{
+  display:flex;align-items:center;gap:12px;justify-content:flex-start;
+  max-width:520px;margin:12px auto;padding:12px 14px;border-radius:12px;
+  text-decoration:none;background:#f7f9fc;border:1px solid #e6eef7;
+  box-shadow:0 3px 8px rgba(0,0,0,0.05)
+}
+.social-link .icon{
+  width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff
+}
+.social-link .text{text-align:left;color:#111;line-height:1.2}
+.social-link .text small{display:block;opacity:.75;margin-top:3px}
+.social-link.yt .icon{background:#ff0000}
+.social-link.ig .icon{background:#c13584}
+.social-link.wa .icon{background:#25D366}
+.social-link:hover{transform:scale(1.02);transition:0.2s}
+
+/* TEACHERS */
+.teacher-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;margin-top:15px
+}
+.teacher-card{
+  background:#f7f9fc;border:1px solid #e6eef7;padding:15px;border-radius:12px;
+  text-align:center;box-shadow:0 3px 8px rgba(0,0,0,0.05)
+}
+.teacher-icon{font-size:34px;margin-bottom:8px}
+.teacher-card h3{margin:8px 0 5px;color:#0b3c5d}
+.teacher-card p{margin:5px 0;color:#555;font-size:14px}
+.demo-tag{margin-top:8px;color:#1a7f37;font-weight:bold}
+
+/* BRANCHES */
+.branch-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:15px;margin-top:15px
+}
+.branch-card{
+  background:#f7f9fc;border:1px solid #e6eef7;padding:15px;border-radius:12px
+}
+.branch-card h3{margin:0 0 8px;color:#0b3c5d}
+.branch-card p{margin:6px 0;color:#444;line-height:1.5}
+
+/* MAP */
+.map-box iframe{width:100%;height:320px;border:0;border-radius:12px}
+
+/* FLOAT BUTTONS */
+.whatsapp-float-right{
+  position:fixed;right:15px;bottom:90px;background:#25D366;color:#fff;
+  padding:12px 16px;border-radius:50px;text-decoration:none;font-weight:bold;
+  box-shadow:0 6px 15px rgba(0,0,0,.35);z-index:5000;display:flex;gap:10px;align-items:center
+}
+.whatsapp-float-right span{font-weight:700}
+.pulse{animation:pulseGlow 2s infinite, shake 1.8s infinite}
+@keyframes pulseGlow{
+  0%{box-shadow:0 0 0 0 rgba(37,211,102,0.7)}
+  70%{box-shadow:0 0 0 18px rgba(37,211,102,0)}
+  100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
+}
+@keyframes shake{
+  0%{transform:translateX(0)}
+  25%{transform:translateX(-2px)}
+  50%{transform:translateX(2px)}
+  75%{transform:translateX(-2px)}
+  100%{transform:translateX(0)}
+}
+.call-float{
+  position:fixed;right:15px;bottom:25px;background:#007bff;color:#fff;
+  padding:12px 16px;border-radius:50px;text-decoration:none;font-weight:bold;
+  box-shadow:0 6px 15px rgba(0,0,0,.35);z-index:5000
+}
+
+/* QUICK NAV */
+.quick-nav{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin-top:15px;
+}
+.quick-nav a{
+  text-decoration:none;
+  background:#0b3c5d;
+  color:white;
+  padding:10px 14px;
+  border-radius:10px;
+  font-weight:bold;
+  font-size:14px;
+}
+.quick-nav a:hover{opacity:0.9}
+
+/* RULES BOX */
+.rules-box{
+  background:#f7f9fc;
+  border:1px solid #e6eef7;
+  padding:15px;
+  border-radius:12px;
+  line-height:1.7;
+  color:#333;
+}
+.rules-box ul{margin:10px 0 0 18px;}
+.rules-box li{margin:6px 0;}
+
+@media (max-width:768px){
+  header h1{font-size:16px}
+  .big-title{font-size:22px}
+  .moti{font-size:16px}
+  .dropdown{width:220px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="left">
+    <img src="bcc.png" alt="Logo">
+    <div>
+      <h1>BRIGHT CAREER CLASS</h1>
+      <p>Learn Today • Lead Tomorrow</p>
+    </div>
+  </div>
+
+  <!-- ✅ 3 DOT MENU -->
+  <div class="menu-btn" onclick="toggleMenu()">⋮</div>
+
+  <div class="dropdown" id="menu">
+    <a href="#home" onclick="closeMenu()">🏠 Home</a>
+    <a href="#about" onclick="closeMenu()">ℹ About</a>
+    <a href="#fees" onclick="closeMenu()">💰 Fees</a>
+    <a href="#teachers" onclick="closeMenu()">👨‍🏫 Teachers</a>
+    <a href="#branches" onclick="closeMenu()">📍 Branches</a>
+    <a href="#map" onclick="closeMenu()">🗺 Google Map</a>
+    <a href="#admission" onclick="closeMenu()">📝 Admission</a>
+
+    <!-- ✅ Admin hidden only in 3-dot -->
+    <a href="#admin" onclick="showAdmin()">⚙ Admin Settings</a>
+  </div>
+</header>
+
+<!-- HOME -->
+<section id="home">
+  <div class="card">
+    <div class="big-title">Welcome to Bright Career Class</div>
+
+    <div class="moti">
+      ✅ “Dream Big. Work Hard. Achieve Excellence.”<br>
+      ✅ “Your Success is Our Mission.”<br>
+      ✅ “Consistency + Practice = Top Results.”<br><br>
+      📚 Classes: <b>6 to 12</b> (CBSE • ICSE/ISC • UP Board)
+    </div>
+
+    <!-- ✅ Removed Fees Status + Admin Login from top -->
+    <div class="quick-nav">
+      <a href="#fees">💰 Fees</a>
+      <a href="#teachers">👨‍🏫 Teachers</a>
+      <a href="#branches">📍 Branches</a>
+      <a href="#admission">📝 Admission</a>
+    </div>
+
+    <hr>
+
+    <div class="social-box">
+      <h3>Follow & Learn Online</h3>
+
+      <a class="social-link yt" target="_blank"
+         href="https://youtube.com/@brightcareerclasses-1?si=QNgL_2sOHDz6l-Vy">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" width="26" height="26">
+            <path fill="currentColor"
+              d="M23.498 6.186a3.007 3.007 0 0 0-2.117-2.13C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.381.556A3.007 3.007 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.007 3.007 0 0 0 2.117 2.13C4.495 20.5 12 20.5 12 20.5s7.505 0 9.381-.556a3.007 3.007 0 0 0 2.117-2.13C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/>
+          </svg>
+        </span>
+        <div class="text">
+          <b>YouTube Classes</b>
+          <small>@brightcareerclasses-1</small>
+        </div>
+      </a>
+
+      <a class="social-link ig" target="_blank"
+         href="https://instagram.com/brightcareerclasses0701">
+        <span class="icon">
+          <svg viewBox="0 0 24 24" width="26" height="26">
+            <path fill="currentColor"
+              d="M7 2C4.239 2 2 4.239 2 7v10c0 2.761 2.239 5 5 5h10c2.761 0 5-2.239 5-5V7c0-2.761-2.239-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm5.25-.75a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+          </svg>
+        </span>
+        <div class="text">
+          <b>Instagram</b>
+          <small>brightcareerclasses0701</small>
+        </div>
+      </a>
+
+      <a class="social-link wa" target="_blank"
+         href="https://wa.me/919140466780?text=Hello%20Bright%20Career%20Class,%20I%20want%20admission">
+        <span class="icon">💬</span>
+        <div class="text">
+          <b>WhatsApp Admission</b>
+          <small>Direct chat for admission</small>
+        </div>
+      </a>
+    </div>
+
+    <hr>
+
+    <!-- ✅ Professional Rules -->
+    <div class="rules-box">
+      <h3 style="margin:0 0 8px;color:#0b3c5d;">📌 Student Rules & Guidelines</h3>
+      <ul>
+        <li><b>Regular Attendance:</b> Students are expected to attend classes regularly and be punctual.</li>
+        <li><b>Homework & Practice:</b> Daily homework and practice assignments must be completed on time.</li>
+        <li><b>Weekly Tests:</b> Weekly tests will be conducted to track progress and improve performance.</li>
+        <li><b>Discipline:</b> Maintain proper discipline and respect teachers and classmates.</li>
+        <li><b>Classroom Etiquette:</b> Mobile phones and distractions are not allowed during class time.</li>
+        <li><b>Parent Updates:</b> Parents will be informed regularly about student progress and attendance.</li>
+        <li><b>Result Focus:</b> Consistency and hard work are the key to excellent results.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="card">
+    <h2 class="section-title">About Bright Career Class</h2>
+    <p style="font-size:16px;line-height:1.7;color:#333;">
+      Bright Career Class provides quality education with strong fundamentals, discipline, and confidence.
+      We focus on concept clarity, regular practice, and board/competitive exam preparation for all boards.
+    </p>
+    <hr>
+    <p><b>Director:</b> Deepak Rai [Amit Rai]</p>
+    <p><b>Contact:</b> 9140466780</p>
+    <p><b>Email:</b> <a href="mailto:brightclasses78@gmail.com">brightclasses78@gmail.com</a></p>
+  </div>
+</section>
+
+<!-- FEES -->
+<section id="fees">
+  <div class="card fee-box">
+    <h2 class="section-title">Fee Structure (Per Month)</h2>
+    <p style="text-align:center;color:#555">✅ Fees auto-fill in Admission Form</p>
+
+    <h3>✅ CBSE BOARD</h3>
+    <ul>
+      <li>6th to 8th – ₹<span class="fee-val" data-key="cbse_6_8"></span></li>
+      <li>9th – ₹<span class="fee-val" data-key="cbse_9"></span></li>
+      <li>10th – ₹<span class="fee-val" data-key="cbse_10"></span></li>
+      <li>11th – ₹<span class="fee-val" data-key="cbse_11"></span></li>
+      <li>12th – ₹<span class="fee-val" data-key="cbse_12"></span></li>
+    </ul>
+
+    <h3>✅ ICSE / ISC BOARD</h3>
+    <ul>
+      <li>6th – ₹<span class="fee-val" data-key="icse_6"></span></li>
+      <li>7th – ₹<span class="fee-val" data-key="icse_7"></span></li>
+      <li>8th – ₹<span class="fee-val" data-key="icse_8"></span></li>
+      <li>9th – ₹<span class="fee-val" data-key="icse_9"></span></li>
+      <li>10th – ₹<span class="fee-val" data-key="icse_10"></span></li>
+      <li>11th – ₹<span class="fee-val" data-key="icse_11"></span></li>
+      <li>12th – ₹<span class="fee-val" data-key="icse_12"></span></li>
+    </ul>
+
+    <h3>✅ UP BOARD</h3>
+    <ul>
+      <li>6th to 8th – ₹<span class="fee-val" data-key="up_6_8"></span></li>
+      <li>9th & 10th – ₹<span class="fee-val" data-key="up_9_10"></span></li>
+      <li>11th & 12th – ₹<span class="fee-val" data-key="up_11_12"></span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- TEACHERS -->
+<section id="teachers">
+  <div class="card">
+    <h2 class="section-title">Our Teachers (Subject-wise)</h2>
+    <p style="text-align:center;color:#555;">Experienced & dedicated teachers ✅</p>
+
+    <div class="teacher-grid">
+      <div class="teacher-card">
+        <div class="teacher-icon">📘</div>
+        <h3>Maths Teacher</h3>
+        <p><b>Qualification:</b> Post Graduate</p>
+        <p><b>Experience:</b> 7 Years</p>
+        <p><b>Classes:</b> 6 to 12</p>
+        <p class="demo-tag">✅ Demo class available</p>
+      </div>
+
+      <div class="teacher-card">
+        <div class="teacher-icon">📗</div>
+        <h3>Science Teacher</h3>
+        <p><b>Qualification:</b> B.Ed</p>
+        <p><b>Experience:</b> 6 Years</p>
+        <p><b>Classes:</b> 6 to 12</p>
+        <p class="demo-tag">✅ Demo class available</p>
+      </div>
+
+      <div class="teacher-card">
+        <div class="teacher-icon">🌍</div>
+        <h3>Social Science Teacher</h3>
+        <p><b>Qualification:</b> B.Ed</p>
+        <p><b>Experience:</b> 5 Years</p>
+        <p><b>Classes:</b> 6 to 10</p>
+        <p class="demo-tag">✅ Demo class available</p>
+      </div>
+
+      <div class="teacher-card">
+        <div class="teacher-icon">📙</div>
+        <h3>English Teacher</h3>
+        <p><b>Qualification:</b> B.Ed</p>
+        <p><b>Experience:</b> 4 Years</p>
+        <p><b>Classes:</b> 6 to 12</p>
+        <p class="demo-tag">✅ Demo class available</p>
+      </div>
+    </div>
+
+    <hr>
+    <h2 class="section-title" style="font-size:20px;">Class 11 & 12 Specialist Streams</h2>
+
+    <div class="teacher-grid">
+      <div class="teacher-card">
+        <div class="teacher-icon">🧪</div>
+        <h3>PCM Specialist</h3>
+        <p><b>Subjects:</b> Physics • Chemistry • Maths</p>
+        <p><b>Classes:</b> 11 & 12</p>
+        <p class="demo-tag">✅ Demo class available</p>
+      </div>
+
+      <div class="teacher-card">
+        <div class="teacher-icon">🧬</div>
+        <h3>PCB Specialist</h3>
+        <p><b>Subjects:</b> Physics • Chemistry • Biology</p>
+        <p><b>Classes:</b> 11 & 12</p>
+        <p class="demo-tag">✅ Demo class available</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANCHES -->
+<section id="branches">
+  <div class="card">
+    <h2 class="section-title">Our Offline Branches</h2>
+
+    <div class="branch-grid">
+      <div class="branch-card">
+        <h3>Branch 1</h3>
+        <p><b>Address:</b> Ghasmandi Chauk, Shahganj, Jaunpur</p>
+        <p><b>Mode:</b> Offline Classes ✅</p>
+      </div>
+
+      <div class="branch-card">
+        <h3>Branch 2</h3>
+        <p><b>Address:</b> Khuthan Padao, Khuthan Road, Shahganj, Jaunpur</p>
+        <p><b>Mode:</b> Offline Classes ✅</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section id="map">
+  <div class="card map-box">
+    <h2 class="section-title">Google Map Location</h2>
+    <p style="text-align:center;color:#555;">✅ Below are both branches exact locations</p>
+
+    <hr>
+    <h3 style="color:#0b3c5d;">📍 Branch 1: Ghass Mandi Rd, Purani Bazar, Shahganj</h3>
+    <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps?q=3M3M%2B636%2C%20Shahganj%2C%20Uttar%20Pradesh%20223101&output=embed"></iframe>
+
+    <hr>
+    <h3 style="color:#0b3c5d;">📍 Branch 2: SH 7, Shahganj</h3>
+    <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps?q=3M4G%2BP6V%2C%20Shahganj%2C%20Uttar%20Pradesh%20223101&output=embed"></iframe>
+  </div>
+</section>
+
+<!-- ADMISSION -->
+<section id="admission">
+  <div class="card">
+    <h2 class="section-title">Admission Form</h2>
+
+    <input id="sname" placeholder="Student Name">
+
+    <select id="sboard" onchange="updateFeePreview()">
+      <option value="">Select Board</option>
+      <option value="CBSE">CBSE</option>
+      <option value="ICSE/ISC">ICSE/ISC</option>
+      <option value="UP BOARD">UP BOARD</option>
+    </select>
+
+    <select id="sclass" onchange="updateFeePreview()">
+      <option value="">Select Class</option>
+      <option>6</option><option>7</option><option>8</option>
+      <option>9</option><option>10</option>
+      <option>11</option><option>12</option>
+    </select>
+
+    <div class="card" style="background:#f7f9fc;border:1px solid #e6eef7;box-shadow:none;">
+      <h3 style="margin:0 0 6px;color:#0b3c5d;">Fee Preview (Auto)</h3>
+      <p style="margin:0;color:#333;font-size:16px;">
+        Monthly Fee: <b id="feePreview">₹0</b>
+      </p>
+    </div>
+
+    <input id="sphone" placeholder="Phone Number">
+    <textarea id="saddress" placeholder="Address"></textarea>
+
+    <button onclick="submitAdmission()">Submit Admission</button>
+  </div>
+</section>
+
+<!-- ADMIN (Hidden) -->
+<section id="admin" class="hidden">
+  <div class="card">
+    <h2 class="section-title">Admin Login</h2>
+
+    <input type="password" id="adminPass" placeholder="Admin Password">
+    <button class="small-btn" onclick="togglePass()">👁 Show / Hide Password</button>
+    <button onclick="login()">Login</button>
+
+    <p style="margin:8px 0;text-align:center;">
+      <a href="#" onclick="forgotPassword()">🔐 Forgot Password (OTP to Owner WhatsApp)</a>
+    </p>
+
+    <div id="otpBox" class="hidden">
+      <hr>
+      <h3 style="color:#0b3c5d;">OTP Reset Password</h3>
+      <p style="font-size:14px;color:#555;">
+        ✅ OTP will be sent only to the Owner WhatsApp Number: <b>9140466780</b>
+      </p>
+      <button class="small-btn" onclick="sendOTP()">Send OTP to Owner WhatsApp</button>
+      <input type="number" id="otpInput" placeholder="Enter OTP">
+      <button onclick="verifyOTP()">Verify OTP</button>
+    </div>
+  </div>
+
+  <div class="card" id="adminPanel" style="display:none;">
+    <h2 class="section-title">Admin Dashboard</h2>
+    <button class="danger-btn" onclick="logout()">Logout</button>
+
+    <hr>
+    <h3 style="color:#0b3c5d;">Admissions List</h3>
+    <div id="records">No admissions yet</div>
+
+    <hr>
+    <h3 style="color:#0b3c5d;">Edit Fees (Admin)</h3>
+    <p style="color:#666;font-size:14px;">
+      ✅ Update fees here → It will automatically update in the Fee Structure & Admission Form.
+    </p>
+
+    <select id="feeBoard">
+      <option value="CBSE">CBSE</option>
+      <option value="ICSE/ISC">ICSE/ISC</option>
+      <option value="UP BOARD">UP BOARD</option>
+    </select>
+
+    <select id="feeClass">
+      <option value="6">Class 6</option>
+      <option value="7">Class 7</option>
+      <option value="8">Class 8</option>
+      <option value="9">Class 9</option>
+      <option value="10">Class 10</option>
+      <option value="11">Class 11</option>
+      <option value="12">Class 12</option>
+    </select>
+
+    <input id="feeAmount" type="number" placeholder="Enter New Fee Amount (₹)">
+    <button class="small-btn" onclick="adminUpdateFee()">Update Fee</button>
+  </div>
+</section>
+
+<!-- FLOATING BUTTONS -->
+<a class="call-float" href="tel:+919140466780">📞 Call Us</a>
+
+<a id="waBtn" class="whatsapp-float-right pulse"
+   target="_blank"
+   href="https://wa.me/919140466780?text=Hello%20Bright%20Career%20Class,%20I%20want%20admission"
+   onclick="stopWhatsappAnimation()">
+  <span>Admission on WhatsApp</span> 💬
+</a>
+
+<script>
+/* DEFAULT FEES */
+const defaultFees = {
+  cbse_6_8: 800, cbse_9: 1000, cbse_10: 1200, cbse_11: 1500, cbse_12: 1800,
+  icse_6: 800, icse_7: 900, icse_8: 1000, icse_9: 1200, icse_10: 1500, icse_11: 1800, icse_12: 2100,
+  up_6_8: 600, up_9_10: 800, up_11_12: 1000
+};
+
+function loadFees(){
+  const saved = JSON.parse(localStorage.getItem("feesData") || "null");
+  return saved ? saved : defaultFees;
+}
+function saveFees(newData){ localStorage.setItem("feesData", JSON.stringify(newData)); }
+
+function getFee(board, cls){
+  const fees = loadFees();
+
+  if(board === "CBSE"){
+    if(cls === "6" || cls === "7" || cls === "8") return fees.cbse_6_8;
+    if(cls === "9") return fees.cbse_9;
+    if(cls === "10") return fees.cbse_10;
+    if(cls === "11") return fees.cbse_11;
+    if(cls === "12") return fees.cbse_12;
+  }
+  if(board === "ICSE/ISC"){
+    if(cls === "6") return fees.icse_6;
+    if(cls === "7") return fees.icse_7;
+    if(cls === "8") return fees.icse_8;
+    if(cls === "9") return fees.icse_9;
+    if(cls === "10") return fees.icse_10;
+    if(cls === "11") return fees.icse_11;
+    if(cls === "12") return fees.icse_12;
+  }
+  if(board === "UP BOARD"){
+    if(cls === "6" || cls === "7" || cls === "8") return fees.up_6_8;
+    if(cls === "9" || cls === "10") return fees.up_9_10;
+    if(cls === "11" || cls === "12") return fees.up_11_12;
+  }
+  return 0;
+}
+
+function refreshFeeText(){
+  const fees = loadFees();
+  document.querySelectorAll(".fee-val").forEach(el=>{
+    const key = el.getAttribute("data-key");
+    el.textContent = fees[key] ?? "";
+  });
+}
+
+/* MENU */
+function toggleMenu(){
+  const m = document.getElementById("menu");
+  m.style.display = (m.style.display === "block") ? "none" : "block";
+}
+function closeMenu(){ document.getElementById("menu").style.display = "none"; }
+
+/* ADMIN */
+let adminPassword = "amit6204";
+let generatedOTP = "";
+
+function showAdmin(){
+  document.getElementById("admin").classList.remove("hidden");
+  window.location.href = "#admin";
+  closeMenu();
+}
+function togglePass(){
+  const p = document.getElementById("adminPass");
+  p.type = (p.type === "password") ? "text" : "password";
+}
+function login(){
+  if(document.getElementById("adminPass").value === adminPassword){
+    alert("✅ Login Successful");
+    document.getElementById("adminPanel").style.display = "block";
+    loadRecords();
+  }else{
+    alert("❌ Wrong Password");
+  }
+}
+function logout(){
+  document.getElementById("adminPanel").style.display = "none";
+  alert("Logged out ✅");
+}
+
+/* OTP only owner */
+function forgotPassword(){ document.getElementById("otpBox").classList.remove("hidden"); }
+
+function sendOTP(){
+  generatedOTP = String(Math.floor(100000 + Math.random()*900000));
+
+  let msg =
+    "🔐 *Bright Career Class OTP*%0A%0A" +
+    "Your OTP is: *" + generatedOTP + "*%0A%0A" +
+    "✅ Do not share this OTP with anyone.";
+
+  window.open("https://wa.me/919140466780?text=" + msg, "_blank");
+  alert("✅ WhatsApp open हुआ है, SEND दबाकर OTP भेज दो");
+}
+
+function verifyOTP(){
+  const otp = document.getElementById("otpInput").value.trim();
+  if(!otp){ alert("Please enter OTP"); return; }
+
+  if(otp === generatedOTP){
+    let newPass = prompt("✅ OTP Verified! Enter New Password:");
+    if(newPass && newPass.length >= 4){
+      adminPassword = newPass;
+      alert("✅ Password updated successfully!");
+
+      document.getElementById("otpInput").value = "";
+      document.getElementById("otpBox").classList.add("hidden");
+      generatedOTP = "";
+    }else{
+      alert("Password must be at least 4 characters.");
+    }
+  }else{
+    alert("❌ Invalid OTP");
+  }
+}
+
+/* Admin Fee Edit */
+function adminUpdateFee(){
+  const board = document.getElementById("feeBoard").value;
+  const cls = document.getElementById("feeClass").value;
+  const amount = parseInt(document.getElementById("feeAmount").value || "0", 10);
+  if(!amount || amount < 1){ alert("Enter valid fee amount"); return; }
+
+  const fees = loadFees();
+
+  if(board === "CBSE"){
+    if(cls === "6" || cls === "7" || cls === "8") fees.cbse_6_8 = amount;
+    if(cls === "9") fees.cbse_9 = amount;
+    if(cls === "10") fees.cbse_10 = amount;
+    if(cls === "11") fees.cbse_11 = amount;
+    if(cls === "12") fees.cbse_12 = amount;
+  }
+  if(board === "ICSE/ISC"){
+    if(cls === "6") fees.icse_6 = amount;
+    if(cls === "7") fees.icse_7 = amount;
+    if(cls === "8") fees.icse_8 = amount;
+    if(cls === "9") fees.icse_9 = amount;
+    if(cls === "10") fees.icse_10 = amount;
+    if(cls === "11") fees.icse_11 = amount;
+    if(cls === "12") fees.icse_12 = amount;
+  }
+  if(board === "UP BOARD"){
+    if(cls === "6" || cls === "7" || cls === "8") fees.up_6_8 = amount;
+    if(cls === "9" || cls === "10") fees.up_9_10 = amount;
+    if(cls === "11" || cls === "12") fees.up_11_12 = amount;
+  }
+
+  saveFees(fees);
+  refreshFeeText();
+  updateFeePreview();
+  alert("✅ Fee updated successfully!");
+  document.getElementById("feeAmount").value = "";
+}
+
+/* Admission Fee Preview */
+function updateFeePreview(){
+  const board = document.getElementById("sboard").value;
+  const cls = document.getElementById("sclass").value;
+  const fee = getFee(board, cls);
+  document.getElementById("feePreview").textContent = "₹" + fee;
+}
+
+/* Admission Submit */
+function submitAdmission(){
+  const name = document.getElementById("sname").value.trim();
+  const board = document.getElementById("sboard").value.trim();
+  const cls = document.getElementById("sclass").value.trim();
+  const phone = document.getElementById("sphone").value.trim();
+  const address = document.getElementById("saddress").value.trim();
+
+  if(!name || !board || !cls || !phone){
+    alert("Please fill required fields (Name, Board, Class, Phone)");
+    return;
+  }
+
+  const fee = getFee(board, cls);
+
+  let all = JSON.parse(localStorage.getItem("admissions") || "[]");
+  all.push({name, board, cls, phone, address, fee, time:new Date().toLocaleString()});
+  localStorage.setItem("admissions", JSON.stringify(all));
+
+  let msg =
+    "📘 *New Admission*%0A%0A" +
+    "👤 Name: " + name + "%0A" +
+    "🏫 Board: " + board + "%0A" +
+    "📚 Class: " + cls + "%0A" +
+    "💰 Fee (Monthly): ₹" + fee + "%0A" +
+    "📞 Phone: " + phone + "%0A" +
+    "📍 Address: " + (address || "-") + "%0A%0A" +
+    "✅ Please contact the student.";
+
+  window.open("https://wa.me/919140466780?text=" + msg, "_blank");
+  alert("✅ Admission Submitted Successfully!");
+
+  document.getElementById("sname").value="";
+  document.getElementById("sboard").value="";
+  document.getElementById("sclass").value="";
+  document.getElementById("feePreview").textContent="₹0";
+  document.getElementById("sphone").value="";
+  document.getElementById("saddress").value="";
+}
+
+/* Admin admissions */
+function loadRecords(){
+  let all = JSON.parse(localStorage.getItem("admissions") || "[]");
+  if(all.length === 0){
+    document.getElementById("records").innerHTML = "No admissions yet";
+    return;
+  }
+  let html = "";
+  all.forEach((d,i)=>{
+    html += `
+      <div style="border:1px solid #eee;padding:12px;border-radius:10px;margin:10px 0;">
+        <b>${i+1}. ${d.name}</b><br>
+        Board: ${d.board}<br>
+        Class: ${d.cls}<br>
+        Fee: ₹${d.fee || 0}<br>
+        Phone: ${d.phone}<br>
+        Address: ${d.address || "-"}<br>
+        <small style="color:#666;">${d.time || ""}</small><br><br>
+        <button class="danger-btn" onclick="deleteRec(${i})">Delete</button>
+      </div>
+    `;
+  });
+  document.getElementById("records").innerHTML = html;
+}
+function deleteRec(i){
+  let all = JSON.parse(localStorage.getItem("admissions") || "[]");
+  if(confirm("Delete this admission?")){
+    all.splice(i,1);
+    localStorage.setItem("admissions", JSON.stringify(all));
+    loadRecords();
+  }
+}
+
+/* Stop WhatsApp animation */
+function stopWhatsappAnimation(){
+  document.getElementById("waBtn").classList.remove("pulse");
+}
+
+/* Close menu on outside click */
+document.addEventListener("click", function(e){
+  const menu = document.getElementById("menu");
+  const btn = document.querySelector(".menu-btn");
+  if(!menu.contains(e.target) && !btn.contains(e.target)){
+    menu.style.display = "none";
+  }
+});
+
+/* On load */
+refreshFeeText();
+</script>
+
+</body>
+</html>
