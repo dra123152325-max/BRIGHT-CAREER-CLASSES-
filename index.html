@@ -12,9 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-html{
-  scroll-behavior:smooth;  /* ✅ Smooth Scroll */
-}
+html{ scroll-behavior:smooth; }
 
 body{
   margin:0;
@@ -28,32 +26,24 @@ body::before{
   content:"";
   position:fixed;
   inset:0;
-
   background-image:url("bcc.png");
   background-repeat:repeat;
   background-size:300px 300px;
   background-position:center;
-
   opacity:0.025;
   filter:blur(0.2px);
   z-index:-1;
   pointer-events:none;
 }
 
-/* ✅ STICKY GLASS HEADER (Premium Look) */
+/* ✅ STICKY GLASS HEADER */
 header{
-  position:sticky;
-  top:0;
-  z-index:9999;
+  position:sticky;top:0;z-index:9999;
   background:rgba(11,60,93,0.92);
   backdrop-filter:blur(10px);
   box-shadow:0 6px 18px rgba(0,0,0,0.18);
-
-  color:#fff;
-  padding:15px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+  color:#fff;padding:15px;
+  display:flex;align-items:center;justify-content:space-between;
 }
 header .left{display:flex;align-items:center;gap:12px}
 header img{width:55px;height:55px;border-radius:50%;background:#fff;padding:3px}
@@ -61,13 +51,15 @@ header h1{font-size:18px;margin:0;line-height:1.2}
 header p{margin:0;font-size:12px;opacity:.95}
 .menu-btn{
   font-size:26px;cursor:pointer;background:rgba(255,255,255,0.15);
-  width:42px;height:42px;border-radius:50%;text-align:center;line-height:42px
+  width:42px;height:42px;border-radius:50%;
+  text-align:center;line-height:42px
 }
 
-/* 3 DOT MENU */
+/* MENU */
 .dropdown{
   position:absolute;right:12px;top:70px;background:#fff;width:240px;
-  box-shadow:0 0 10px rgba(0,0,0,.25);display:none;z-index:999;border-radius:10px;overflow:hidden
+  box-shadow:0 0 10px rgba(0,0,0,.25);display:none;z-index:999;
+  border-radius:10px;overflow:hidden
 }
 .dropdown a{
   display:block;padding:12px;text-decoration:none;color:#333;
@@ -77,8 +69,6 @@ header p{margin:0;font-size:12px;opacity:.95}
 
 /* SECTIONS */
 section{padding:20px}
-
-/* ✅ Premium Card Look */
 .card{
   background:rgba(255,255,255,0.95);
   border:1px solid rgba(11,60,93,0.10);
@@ -98,11 +88,14 @@ input,select,textarea,button{
   border-radius:10px;border:1px solid #ddd;box-sizing:border-box
 }
 button{
-  background:#0b3c5d;color:#fff;border:none;cursor:pointer;font-weight:700;border-radius:10px
+  background:#0b3c5d;color:#fff;border:none;
+  cursor:pointer;font-weight:700;border-radius:10px
 }
 button:hover{background:#09314b}
+.small-btn{background:#1c6ea4}
+.small-btn:hover{background:#144e75}
 
-/* SOCIAL ICON LINKS */
+/* SOCIAL */
 .social-box{text-align:center;margin-top:15px}
 .social-box h3{color:#0b3c5d;margin-bottom:12px}
 .social-link{
@@ -124,10 +117,9 @@ button:hover{background:#09314b}
 .social-link .text small{display:block;opacity:.75;margin-top:3px}
 .social-link:hover{transform:scale(1.02)}
 
-/* QUICK NAV BUTTONS */
+/* QUICK NAV */
 .quick-nav{
-  display:flex;gap:10px;flex-wrap:wrap;justify-content:center;
-  margin-top:18px
+  display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px
 }
 .quick-nav a{
   padding:10px 16px;background:#0b3c5d;color:#fff;border-radius:12px;
@@ -164,6 +156,85 @@ button:hover{background:#09314b}
 
 /* MAP */
 .map-box iframe{width:100%;height:320px;border:0;border-radius:14px}
+
+/* ✅ ID CARD */
+.idcard-wrap{
+  display:none;
+  margin-top:15px;
+  padding:16px;
+  border-radius:16px;
+  background:#f7f9fc;
+  border:1px solid #e6eef7;
+}
+.idcard{
+  width:100%;
+  max-width:420px;
+  margin:0 auto;
+  border-radius:18px;
+  overflow:hidden;
+  background:#fff;
+  border:1px solid rgba(0,0,0,0.08);
+  box-shadow:0 14px 30px rgba(0,0,0,0.10);
+}
+.id-top{
+  background:linear-gradient(90deg,#0b3c5d,#1c6ea4);
+  padding:14px;
+  color:#fff;
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.id-top img{
+  width:52px;height:52px;border-radius:14px;background:#fff;padding:4px;
+}
+.id-top .t1{font-weight:800;font-size:16px;line-height:1.1}
+.id-top .t2{font-size:12px;opacity:.95;margin-top:3px}
+
+.id-body{
+  padding:14px;
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  justify-content:space-between;
+}
+.id-left{
+  flex:1;
+}
+.id-row{
+  font-size:14px;
+  margin:6px 0;
+  color:#222;
+}
+.id-row b{color:#0b3c5d}
+.student-id{
+  margin-top:10px;
+  padding:8px 12px;
+  border-radius:12px;
+  background:#eaf2ff;
+  border:1px solid #d6e6ff;
+  display:inline-block;
+  font-weight:800;
+  color:#0b3c5d;
+}
+.qr-box{
+  width:120px;
+  min-width:120px;
+  height:120px;
+  border-radius:16px;
+  background:#fff;
+  border:1px solid #eee;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.id-footer{
+  padding:12px 14px;
+  background:#fff;
+  border-top:1px solid #eee;
+  font-size:12px;
+  color:#666;
+  text-align:center;
+}
 
 /* FLOAT BUTTONS */
 .whatsapp-float-right{
@@ -244,7 +315,6 @@ footer{
       📚 Classes: <b>6 to 12</b> (CBSE • ICSE/ISC • UP Board)
     </div>
 
-    <!-- ✅ Gradient Highlight Strip -->
     <div style="
       margin-top:15px;
       padding:12px;
@@ -257,7 +327,6 @@ footer{
       🎯 Demo Class Available • Weekly Tests • Best Notes Support ✅
     </div>
 
-    <!-- Quick Nav -->
     <div class="quick-nav">
       <a href="#teachers">👨‍🏫 Teachers</a>
       <a href="#branches">📍 Branches</a>
@@ -270,24 +339,14 @@ footer{
 
       <a class="social-link yt" target="_blank"
          href="https://youtube.com/@brightcareerclasses-1?si=QNgL_2sOHDz6l-Vy">
-        <span class="icon">
-          <img src="youtube.png" alt="YouTube">
-        </span>
-        <div class="text">
-          <b>YouTube Classes</b>
-          <small>@brightcareerclasses-1</small>
-        </div>
+        <span class="icon"><img src="youtube.png" alt="YouTube"></span>
+        <div class="text"><b>YouTube Classes</b><small>@brightcareerclasses-1</small></div>
       </a>
 
       <a class="social-link ig" target="_blank"
          href="https://instagram.com/brightcareerclasses0701">
-        <span class="icon">
-          <img src="instagram.png" alt="Instagram">
-        </span>
-        <div class="text">
-          <b>Instagram</b>
-          <small>brightcareerclasses0701</small>
-        </div>
+        <span class="icon"><img src="instagram.png" alt="Instagram"></span>
+        <div class="text"><b>Instagram</b><small>brightcareerclasses0701</small></div>
       </a>
     </div>
   </div>
@@ -312,7 +371,6 @@ footer{
     </p>
 
     <hr>
-
     <p><b>Director:</b> Deepak Rai</p>
     <p><b>Administrator:</b> Amit Rai</p>
     <p><b>Contact:</b> 9140466780</p>
@@ -326,7 +384,6 @@ footer{
     <h2>Our Teachers (Subject-wise)</h2>
     <p style="text-align:center;color:#555;">Experienced & dedicated teachers ✅</p>
 
-    <!-- ✅ Badge -->
     <div style="text-align:center;margin-top:10px;">
       <span style="
         background:#eaf7ee;
@@ -378,27 +435,6 @@ footer{
         <p class="demo-tag">✅ Demo class available</p>
       </div>
     </div>
-
-    <hr>
-    <h2 style="text-align:center;color:#0b3c5d;margin-top:0;">Class 11 & 12 Specialist Streams</h2>
-
-    <div class="teacher-grid">
-      <div class="teacher-card">
-        <div class="teacher-icon">🧪</div>
-        <h3>PCM Specialist</h3>
-        <p><b>Subjects:</b> Physics • Chemistry • Maths</p>
-        <p><b>Classes:</b> 11 & 12</p>
-        <p class="demo-tag">✅ Demo class available</p>
-      </div>
-
-      <div class="teacher-card">
-        <div class="teacher-icon">🧬</div>
-        <h3>PCB Specialist</h3>
-        <p><b>Subjects:</b> Physics • Chemistry • Biology</p>
-        <p><b>Classes:</b> 11 & 12</p>
-        <p class="demo-tag">✅ Demo class available</p>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -427,9 +463,7 @@ footer{
 <section id="map">
   <div class="card map-box">
     <h2>Google Map Location</h2>
-    <p style="text-align:center;color:#555;">
-      ✅ Below are both branches exact locations
-    </p>
+    <p style="text-align:center;color:#555;">✅ Below are both branches exact locations</p>
 
     <hr>
     <h3 style="color:#0b3c5d;">📍 Branch 1: Ghass Mandi Rd, Purani Bazar, Shahganj</h3>
@@ -474,16 +508,53 @@ footer{
     <input id="sphone" placeholder="Phone Number">
     <textarea id="saddress" placeholder="Address"></textarea>
 
-    <button onclick="submitAdmission()">Submit Admission</button>
+    <!-- ✅ Generate ID Button -->
+    <button class="small-btn" onclick="generateIDCard()">🎫 Generate Student ID Card + QR</button>
 
-    <!-- ✅ Admission Note -->
+    <!-- ✅ ID Card Area -->
+    <div id="idCardWrap" class="idcard-wrap">
+      <h3 style="text-align:center;color:#0b3c5d;margin-top:0;">✅ Student ID Card Generated</h3>
+
+      <div id="idCard" class="idcard">
+        <div class="id-top">
+          <img src="bcc.png" alt="Logo">
+          <div>
+            <div class="t1">Bright Career Classes</div>
+            <div class="t2">Official Student ID Card</div>
+          </div>
+        </div>
+
+        <div class="id-body">
+          <div class="id-left">
+            <div class="id-row"><b>Name:</b> <span id="cardName">-</span></div>
+            <div class="id-row"><b>Board:</b> <span id="cardBoard">-</span></div>
+            <div class="id-row"><b>Class:</b> <span id="cardClass">-</span></div>
+            <div class="id-row"><b>Phone:</b> <span id="cardPhone">-</span></div>
+            <div class="id-row"><b>Monthly Fee:</b> ₹<span id="cardFee">0</span></div>
+
+            <div class="student-id">ID: <span id="cardID">BCC-000000</span></div>
+          </div>
+
+          <div class="qr-box">
+            <div id="qrBox"></div>
+          </div>
+        </div>
+
+        <div class="id-footer">
+          ✅ Scan QR to verify details • Bright Career Classes
+        </div>
+      </div>
+
+      <button style="margin-top:12px;" onclick="downloadIDCardPNG()">⬇ Download ID Card (PNG)</button>
+      <button class="small-btn" onclick="submitAdmission()">📩 Submit Admission WhatsApp</button>
+    </div>
+
     <p style="text-align:center;color:#0b3c5d;font-weight:600;margin-top:10px;">
       ✅ आपका admission WhatsApp पर भेज दिया जाएगा
     </p>
   </div>
 </section>
 
-<!-- ✅ Footer -->
 <footer>
   © 2026 Bright Career Classes • All Rights Reserved ✅
 </footer>
@@ -491,7 +562,7 @@ footer{
 <!-- FLOATING CALL BUTTON -->
 <a class="call-float" href="tel:+919140466780">📞 Call Us</a>
 
-<!-- FLOATING WHATSAPP BUTTON (watsapp.png) -->
+<!-- FLOATING WHATSAPP BUTTON -->
 <a id="waBtn" class="whatsapp-float-right pulse"
    target="_blank"
    href="https://wa.me/919140466780?text=Hello%20Bright%20Career%20Classes,%20I%20want%20admission"
@@ -499,6 +570,12 @@ footer{
   <img src="watsapp.png" alt="WhatsApp">
   <span>Admission on WhatsApp</span> 💬
 </a>
+
+<!-- ✅ QR Code Library -->
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+<!-- ✅ HTML to Canvas Library (Download) -->
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
 <script>
 /* MENU */
@@ -508,7 +585,7 @@ function toggleMenu(){
 }
 function closeMenu(){ document.getElementById("menu").style.display = "none"; }
 
-/* ✅ DEFAULT FEES (Auto fee preview ke liye needed) */
+/* ✅ DEFAULT FEES */
 const defaultFees = {
   cbse_6_8: 800, cbse_9: 1000, cbse_10: 1200, cbse_11: 1500, cbse_12: 1800,
   icse_6: 800, icse_7: 900, icse_8: 1000, icse_9: 1200, icse_10: 1500, icse_11: 1800, icse_12: 2100,
@@ -554,6 +631,70 @@ function updateFeePreview(){
   document.getElementById("feePreview").textContent = "₹" + fee;
 }
 
+/* ✅ Unique Student ID */
+function makeStudentID(){
+  const num = Math.floor(100000 + Math.random()*900000);
+  return "BCC-" + num;
+}
+
+/* ✅ Generate ID Card + QR */
+function generateIDCard(){
+  const name = document.getElementById("sname").value.trim();
+  const board = document.getElementById("sboard").value.trim();
+  const cls = document.getElementById("sclass").value.trim();
+  const phone = document.getElementById("sphone").value.trim();
+
+  if(!name || !board || !cls || !phone){
+    alert("Please fill required fields (Name, Board, Class, Phone)");
+    return;
+  }
+
+  const fee = getFee(board, cls);
+  const sid = makeStudentID();
+
+  document.getElementById("cardName").textContent = name;
+  document.getElementById("cardBoard").textContent = board;
+  document.getElementById("cardClass").textContent = cls;
+  document.getElementById("cardPhone").textContent = phone;
+  document.getElementById("cardFee").textContent = fee;
+  document.getElementById("cardID").textContent = sid;
+
+  // QR data
+  const qrData =
+    "Bright Career Classes | Student ID Card\n" +
+    "ID: " + sid + "\n" +
+    "Name: " + name + "\n" +
+    "Board: " + board + "\n" +
+    "Class: " + cls + "\n" +
+    "Phone: " + phone + "\n" +
+    "Fee: ₹" + fee;
+
+  // Clear old QR
+  document.getElementById("qrBox").innerHTML = "";
+
+  // Create new QR
+  new QRCode(document.getElementById("qrBox"), {
+    text: qrData,
+    width: 100,
+    height: 100
+  });
+
+  document.getElementById("idCardWrap").style.display = "block";
+  document.getElementById("idCardWrap").scrollIntoView({behavior:"smooth"});
+}
+
+/* ✅ Download ID Card as PNG */
+function downloadIDCardPNG(){
+  const node = document.getElementById("idCard");
+  html2canvas(node, {scale: 2}).then(canvas=>{
+    const link = document.createElement("a");
+    link.download = "BrightCareer_IDCard.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  });
+}
+
+/* ✅ Submit Admission WhatsApp */
 function submitAdmission(){
   const name = document.getElementById("sname").value.trim();
   const board = document.getElementById("sboard").value.trim();
@@ -579,17 +720,10 @@ function submitAdmission(){
     "✅ Please contact the student.";
 
   window.open("https://wa.me/919140466780?text=" + msg, "_blank");
-
   alert("✅ Admission Submitted Successfully!");
-
-  document.getElementById("sname").value="";
-  document.getElementById("sboard").value="";
-  document.getElementById("sclass").value="";
-  document.getElementById("feePreview").textContent="₹0";
-  document.getElementById("sphone").value="";
-  document.getElementById("saddress").value="";
 }
 
+/* Stop animation */
 function stopWhatsappAnimation(){
   document.getElementById("waBtn").classList.remove("pulse");
 }
