@@ -12,6 +12,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+html{
+  scroll-behavior:smooth;  /* ✅ Smooth Scroll */
+}
+
 body{
   margin:0;
   font-family:'Poppins', Arial, sans-serif;
@@ -36,10 +40,20 @@ body::before{
   pointer-events:none;
 }
 
-/* HEADER */
+/* ✅ STICKY GLASS HEADER (Premium Look) */
 header{
-  background:#0b3c5d;color:#fff;padding:15px;
-  display:flex;align-items:center;justify-content:space-between;position:relative
+  position:sticky;
+  top:0;
+  z-index:9999;
+  background:rgba(11,60,93,0.92);
+  backdrop-filter:blur(10px);
+  box-shadow:0 6px 18px rgba(0,0,0,0.18);
+
+  color:#fff;
+  padding:15px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 header .left{display:flex;align-items:center;gap:12px}
 header img{width:55px;height:55px;border-radius:50%;background:#fff;padding:3px}
@@ -63,9 +77,13 @@ header p{margin:0;font-size:12px;opacity:.95}
 
 /* SECTIONS */
 section{padding:20px}
+
+/* ✅ Premium Card Look */
 .card{
-  background:#fff;padding:20px;border-radius:14px;
-  box-shadow:0 0 12px rgba(0,0,0,.10);
+  background:rgba(255,255,255,0.95);
+  border:1px solid rgba(11,60,93,0.10);
+  padding:20px;border-radius:16px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.08);
   margin:15px auto;max-width:980px;
   transition:0.25s;
 }
@@ -174,6 +192,14 @@ button:hover{background:#09314b}
   box-shadow:0 6px 15px rgba(0,0,0,.35);z-index:5000
 }
 
+footer{
+  margin-top:40px;
+  padding:18px;
+  text-align:center;
+  color:#555;
+  font-size:14px;
+}
+
 @media (max-width:768px){
   header h1{font-size:16px}
   .big-title{font-size:22px}
@@ -218,6 +244,19 @@ button:hover{background:#09314b}
       📚 Classes: <b>6 to 12</b> (CBSE • ICSE/ISC • UP Board)
     </div>
 
+    <!-- ✅ Gradient Highlight Strip -->
+    <div style="
+      margin-top:15px;
+      padding:12px;
+      border-radius:14px;
+      background:linear-gradient(90deg,#0b3c5d,#1c6ea4);
+      color:white;
+      text-align:center;
+      font-weight:700;
+    ">
+      🎯 Demo Class Available • Weekly Tests • Best Notes Support ✅
+    </div>
+
     <!-- Quick Nav -->
     <div class="quick-nav">
       <a href="#teachers">👨‍🏫 Teachers</a>
@@ -229,7 +268,6 @@ button:hover{background:#09314b}
     <div class="social-box">
       <h3>Follow & Learn Online</h3>
 
-      <!-- ✅ YouTube (youtube.png) -->
       <a class="social-link yt" target="_blank"
          href="https://youtube.com/@brightcareerclasses-1?si=QNgL_2sOHDz6l-Vy">
         <span class="icon">
@@ -241,7 +279,6 @@ button:hover{background:#09314b}
         </div>
       </a>
 
-      <!-- ✅ Instagram (instagram.png) -->
       <a class="social-link ig" target="_blank"
          href="https://instagram.com/brightcareerclasses0701">
         <span class="icon">
@@ -288,6 +325,21 @@ button:hover{background:#09314b}
   <div class="card">
     <h2>Our Teachers (Subject-wise)</h2>
     <p style="text-align:center;color:#555;">Experienced & dedicated teachers ✅</p>
+
+    <!-- ✅ Badge -->
+    <div style="text-align:center;margin-top:10px;">
+      <span style="
+        background:#eaf7ee;
+        color:#1a7f37;
+        padding:8px 14px;
+        border-radius:50px;
+        font-weight:700;
+        border:1px solid #cfe9d7;
+        display:inline-block;
+      ">
+        🏆 90%+ Score Booster Support
+      </span>
+    </div>
 
     <div class="teacher-grid">
       <div class="teacher-card">
@@ -423,8 +475,18 @@ button:hover{background:#09314b}
     <textarea id="saddress" placeholder="Address"></textarea>
 
     <button onclick="submitAdmission()">Submit Admission</button>
+
+    <!-- ✅ Admission Note -->
+    <p style="text-align:center;color:#0b3c5d;font-weight:600;margin-top:10px;">
+      ✅ आपका admission WhatsApp पर भेज दिया जाएगा
+    </p>
   </div>
 </section>
+
+<!-- ✅ Footer -->
+<footer>
+  © 2026 Bright Career Classes • All Rights Reserved ✅
+</footer>
 
 <!-- FLOATING CALL BUTTON -->
 <a class="call-float" href="tel:+919140466780">📞 Call Us</a>
@@ -532,7 +594,7 @@ function stopWhatsappAnimation(){
   document.getElementById("waBtn").classList.remove("pulse");
 }
 
-/* ✅ Initial fee preview safe */
+/* ✅ Initial fee preview */
 updateFeePreview();
 </script>
 
