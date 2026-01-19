@@ -660,6 +660,9 @@ function adminLogin(){
     alert("✅ Admin login successful");
     refreshAdmin();
     refreshUI();
+    // ✅ Admin ko main page/home access
+location.href = "#home";
+
   }else alert("❌ Wrong admin password");
 }
 function adminLogout(){
@@ -887,4 +890,5 @@ refreshUI();
 
 </body>
 </html>
+
 
