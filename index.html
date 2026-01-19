@@ -449,6 +449,7 @@
       <hr>
       <h2 style="margin-top:0;color:#0b3c5d;">✅ Admin Panel</h2>
       <button class="danger-btn" onclick="adminLogout()">Logout Admin</button>
+<button class="small-btn" onclick="location.href='#home'">🏠 Go to Home</button>
 
       <hr>
       <h3 style="color:#0b3c5d;margin-bottom:6px;">Admissions (Serial Wise)</h3>
@@ -816,13 +817,19 @@ function openWhatsappWithID(){
 }
 
 /* UI refresh */
-function showMainSections(isLoggedIn){
+function showMainSections(){
+  const loggedIn = !!getSession();
+  const admin = isAdmin();
+
+  const allow = loggedIn || admin; // ✅ admin bhi website खोल सकता है
+
   ["home","about","admission","myAccount"].forEach(id=>{
-    $(id).classList.toggle("hidden", !isLoggedIn);
+    $(id).classList.toggle("hidden", !allow);
   });
-  $("callBtn").classList.toggle("hidden", !isLoggedIn);
-  $("waBtn").classList.toggle("hidden", !isLoggedIn);
+  $("callBtn").classList.toggle("hidden", !allow);
+  $("waBtn").classList.toggle("hidden", !allow);
 }
+
 
 function refreshUI(){
   const userId = getSession();
@@ -831,7 +838,7 @@ function refreshUI(){
   $("authBox").classList.toggle("hidden", loggedIn);
   $("authHiddenHint").classList.toggle("hidden", !loggedIn);
 
-  showMainSections(loggedIn);
+  showMainSections();
 
   if(loggedIn){ refreshAccount(); }
   else{
@@ -847,3 +854,4 @@ refreshUI();
 
 </body>
 </html>
+
