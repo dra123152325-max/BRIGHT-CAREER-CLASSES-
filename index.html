@@ -171,6 +171,42 @@
     .dropdown{width:230px}
   }
 </style>
+  .dash{
+  display:flex;
+  gap:0;
+  min-height:420px;
+  border-radius:16px;
+  overflow:hidden;
+}
+.dash-left{
+  width:270px;
+  background:linear-gradient(180deg,#0b3c5d,#1c6ea4);
+  color:#fff;
+  padding:18px;
+}
+.dash-left h2{margin:0 0 12px;font-size:18px;}
+.dash-left p{margin:0 0 14px;font-size:13px;opacity:.9;}
+.dash-link{
+  display:block;
+  color:#fff;
+  text-decoration:none;
+  font-weight:900;
+  padding:10px 12px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.10);
+  margin-bottom:10px;
+}
+.dash-link:hover{background:rgba(255,255,255,0.18);}
+.dash-right{
+  flex:1;
+  padding:18px;
+  background:rgba(255,255,255,0.97);
+}
+@media(max-width:800px){
+  .dash{flex-direction:column}
+  .dash-left{width:100%}
+}
+
 </head>
 
 <body>
@@ -230,12 +266,12 @@
       </div>
     </div>
 
-    <div id="authSuccess" class="hidden">
-      <h3 style="color:#0b3c5d;margin-top:0;">✅ Logged in Successfully</h3>
-      <p class="muted">Now you can access full website.</p>
-      <button onclick="goHome()">Go to Home</button>
-      <button class="danger-btn" onclick="logoutStudent()">Logout</button>
-    </div>
+    <div id="authHiddenHint" class="hidden card" style="background:#f7f9fc;border:1px solid #e6eef7;box-shadow:none;">
+  <b>✅ Logged in!</b>
+  <div class="muted" style="margin-top:6px;">Go to “My Account” for dashboard.</div>
+  <button onclick="location.href='#myAccount'">Open My Account</button>
+</div>
+
 
   </div>
 </section>
@@ -369,59 +405,87 @@
 
 <!-- ✅ MY ACCOUNT -->
 <section id="myAccount" class="hidden">
-  <div class="card">
-    <h2>👤 My Account</h2>
+  <div class="card" style="padding:0;overflow:hidden;">
 
-    <div id="accInfo" class="card" style="background:#f7f9fc;border:1px solid #e6eef7;box-shadow:none;">
-      Loading...
-    </div>
+    <div class="dash">
 
-    <div id="accAdmissionBox" class="card" style="background:#fff;border:1px solid #eee;box-shadow:none;">
-      <h3 style="margin-top:0;color:#0b3c5d;">📌 Admission Timeline</h3>
-      <div id="accAdmissionTimeline" class="muted">No admission request yet.</div>
-    </div>
+      <!-- ✅ LEFT SIDE -->
+      <div class="dash-left">
+        <h2>👤 My Account</h2>
+        <p>Student Dashboard</p>
 
-    <!-- ✅ ID Card only after Approved -->
-    <div id="idCardWrap" class="idcard-wrap">
-      <h3 style="text-align:center;color:#0b3c5d;margin-top:0;">✅ Your ID Card (Approved)</h3>
+        <a class="dash-link" href="#myAccount">✅ Account Status</a>
+        <a class="dash-link" href="#admission">📝 Admission Form</a>
+        <a class="dash-link" href="#home">🏠 Home</a>
+        <a class="dash-link" href="#adminLogin">⚙ Admin Login</a>
 
-      <div id="idCard" class="idcard">
-        <div class="id-top">
-          <img src="bcc.png" alt="Logo">
-          <div>
-            <div class="t1">Bright Career Classes</div>
-            <div class="t2">Official Student ID Card</div>
-          </div>
-        </div>
-
-        <div class="id-body">
-          <div class="id-left">
-            <div class="id-row"><b>Name:</b> <span id="cardName">-</span></div>
-            <div class="id-row"><b>Board:</b> <span id="cardBoard">-</span></div>
-            <div class="id-row"><b>Class:</b> <span id="cardClass">-</span></div>
-            <div class="id-row"><b>Phone:</b> <span id="cardPhone">-</span></div>
-            <div class="id-row"><b>Email:</b> <span id="cardEmail">-</span></div>
-
-            <div class="id-row"><b>Admission No:</b> <span id="cardAdmNo">-</span></div>
-
-            <div class="student-id">ID: <span id="cardID">BCC-000000</span></div>
-          </div>
-
-          <div class="qr-box">
-            <div id="qrBox"></div>
-          </div>
-        </div>
-
-        <div class="id-footer">
-          ✅ Scan QR to verify • Bright Career Classes
-        </div>
+        <button class="danger-btn" style="margin-top:12px;" onclick="logoutStudent()">Logout</button>
       </div>
 
-      <button style="margin-top:12px;" onclick="downloadIDCardPNG()">⬇ Download ID Card (PNG)</button>
-      <button class="small-btn" onclick="openWhatsappWithID()">💬 Send ID + Details on WhatsApp</button>
+      <!-- ✅ RIGHT SIDE -->
+      <div class="dash-right">
+
+        <!-- ✅ LOGIN SUCCESS BOX (SHIFTED HERE) -->
+        <div id="myAccountTopBox" class="card" style="background:#f7f9fc;border:1px solid #e6eef7;box-shadow:none;">
+          <h3 style="margin:0;color:#0b3c5d;">✅ Logged in Successfully</h3>
+          <p class="muted" style="margin:6px 0 12px;">Now you can access full website.</p>
+          <button onclick="goHome()">Go to Home</button>
+          <button class="danger-btn" onclick="logoutStudent()">Logout</button>
+        </div>
+
+        <!-- ✅ Account Info -->
+        <div id="accInfo" class="card" style="background:#f7f9fc;border:1px solid #e6eef7;box-shadow:none;">
+          Loading...
+        </div>
+
+        <!-- ✅ Admission Timeline -->
+        <div id="accAdmissionBox" class="card" style="background:#fff;border:1px solid #eee;box-shadow:none;">
+          <h3 style="margin-top:0;color:#0b3c5d;">📌 Admission Timeline</h3>
+          <div id="accAdmissionTimeline" class="muted">No admission request yet.</div>
+        </div>
+
+        <!-- ✅ ID Card only after Approved -->
+        <div id="idCardWrap" class="idcard-wrap">
+          <h3 style="text-align:center;color:#0b3c5d;margin-top:0;">✅ Your ID Card (Approved)</h3>
+
+          <div id="idCard" class="idcard">
+            <div class="id-top">
+              <img src="bcc.png" alt="Logo">
+              <div>
+                <div class="t1">Bright Career Classes</div>
+                <div class="t2">Official Student ID Card</div>
+              </div>
+            </div>
+
+            <div class="id-body">
+              <div class="id-left">
+                <div class="id-row"><b>Name:</b> <span id="cardName">-</span></div>
+                <div class="id-row"><b>Board:</b> <span id="cardBoard">-</span></div>
+                <div class="id-row"><b>Class:</b> <span id="cardClass">-</span></div>
+                <div class="id-row"><b>Phone:</b> <span id="cardPhone">-</span></div>
+                <div class="id-row"><b>Email:</b> <span id="cardEmail">-</span></div>
+                <div class="id-row"><b>Admission No:</b> <span id="cardAdmNo">-</span></div>
+
+                <div class="student-id">ID: <span id="cardID">BCC-000000</span></div>
+              </div>
+
+              <div class="qr-box">
+                <div id="qrBox"></div>
+              </div>
+            </div>
+
+            <div class="id-footer">
+              ✅ Scan QR to verify • Bright Career Classes
+            </div>
+          </div>
+
+          <button style="margin-top:12px;" onclick="downloadIDCardPNG()">⬇ Download ID Card (PNG)</button>
+          <button class="small-btn" onclick="openWhatsappWithID()">💬 Send ID + Details on WhatsApp</button>
+        </div>
+
+      </div>
     </div>
 
-    <button class="danger-btn" onclick="logoutStudent()">Logout</button>
   </div>
 </section>
 
@@ -1013,7 +1077,8 @@ function refreshUI(){
 
   // auth boxes
   $("authBox").classList.toggle("hidden", loggedIn);
-  $("authSuccess").classList.toggle("hidden", !loggedIn);
+ $("authHiddenHint").classList.toggle("hidden", !loggedIn);
+
 
   showMainSections(loggedIn);
 
@@ -1033,4 +1098,5 @@ refreshUI();
 
 </body>
 </html>
+
 
