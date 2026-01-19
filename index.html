@@ -8,9 +8,11 @@
 <!-- ✅ Google Search Console Verification -->
 <meta name="google-site-verification" content="TWdW0gvrW6T77Qodr3lPEdWIVcW7qwqUvINv-kl6fJU" />
 
+<!-- ✅ Favicon -->
 <link rel="icon" type="image/png" href="favicon.png?v=2">
 <link rel="apple-touch-icon" href="favicon.png?v=2">
 
+<!-- ✅ Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -18,12 +20,16 @@
   body{
     margin:0;font-family:'Poppins',Arial,sans-serif;background:#f4f6fb;position:relative;
   }
-
-  /* watermark */
+  /* watermark logo full page */
   body::before{
     content:"";position:fixed;inset:0;
-    background-image:url("bcc.png");background-repeat:repeat;background-size:300px 300px;background-position:center;
-    opacity:.025;z-index:-1;pointer-events:none;
+    background-image:url("bcc.png");
+    background-repeat:repeat;
+    background-size:300px 300px;
+    background-position:center;
+    opacity:.025;
+    z-index:-1;
+    pointer-events:none;
   }
 
   header{
@@ -44,7 +50,6 @@
     width:42px;height:42px;border-radius:50%;text-align:center;line-height:42px;
     user-select:none;
   }
-
   .dropdown{
     position:absolute;right:12px;top:70px;background:#fff;width:260px;
     box-shadow:0 0 10px rgba(0,0,0,.25);display:none;z-index:999;border-radius:12px;overflow:hidden
@@ -81,7 +86,6 @@
   .danger-btn{background:#e74c3c}
   .danger-btn:hover{background:#c0392b}
   .muted{color:#666;font-size:14px}
-
   .hidden{display:none !important}
 
   .social-box{text-align:center;margin-top:15px}
@@ -128,7 +132,6 @@
   .id-top img{width:52px;height:52px;border-radius:14px;background:#fff;padding:4px}
   .id-top .t1{font-weight:900;font-size:16px;line-height:1.1}
   .id-top .t2{font-size:12px;opacity:.95;margin-top:3px}
-
   .id-body{padding:14px;display:flex;gap:14px;align-items:flex-start;justify-content:space-between}
   .id-left{flex:1}
   .id-row{font-size:14px;margin:6px 0;color:#222}
@@ -142,6 +145,24 @@
     display:flex;align-items:center;justify-content:center;
   }
   .id-footer{padding:12px 14px;background:#fff;border-top:1px solid #eee;font-size:12px;color:#666;text-align:center}
+
+  /* ✅ My Account Side Dashboard */
+  .dash{
+    display:flex;gap:0;min-height:420px;border-radius:16px;overflow:hidden;
+  }
+  .dash-left{
+    width:270px;background:linear-gradient(180deg,#0b3c5d,#1c6ea4);
+    color:#fff;padding:18px;
+  }
+  .dash-left h2{margin:0 0 12px;font-size:18px;}
+  .dash-left p{margin:0 0 14px;font-size:13px;opacity:.9;}
+  .dash-link{
+    display:block;color:#fff;text-decoration:none;font-weight:900;
+    padding:10px 12px;border-radius:12px;background:rgba(255,255,255,0.10);
+    margin-bottom:10px;
+  }
+  .dash-link:hover{background:rgba(255,255,255,0.18);}
+  .dash-right{flex:1;padding:18px;background:rgba(255,255,255,0.97);}
 
   /* Floating */
   .call-float{
@@ -162,8 +183,10 @@
     100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
   }
 
-  footer{margin-top:40px;padding:18px;text-align:center;color:#555;font-size:14px}
-
+  @media(max-width:800px){
+    .dash{flex-direction:column}
+    .dash-left{width:100%}
+  }
   @media(max-width:768px){
     header h1{font-size:16px}
     .big-title{font-size:22px}
@@ -171,42 +194,6 @@
     .dropdown{width:230px}
   }
 </style>
-  .dash{
-  display:flex;
-  gap:0;
-  min-height:420px;
-  border-radius:16px;
-  overflow:hidden;
-}
-.dash-left{
-  width:270px;
-  background:linear-gradient(180deg,#0b3c5d,#1c6ea4);
-  color:#fff;
-  padding:18px;
-}
-.dash-left h2{margin:0 0 12px;font-size:18px;}
-.dash-left p{margin:0 0 14px;font-size:13px;opacity:.9;}
-.dash-link{
-  display:block;
-  color:#fff;
-  text-decoration:none;
-  font-weight:900;
-  padding:10px 12px;
-  border-radius:12px;
-  background:rgba(255,255,255,0.10);
-  margin-bottom:10px;
-}
-.dash-link:hover{background:rgba(255,255,255,0.18);}
-.dash-right{
-  flex:1;
-  padding:18px;
-  background:rgba(255,255,255,0.97);
-}
-@media(max-width:800px){
-  .dash{flex-direction:column}
-  .dash-left{width:100%}
-}
-
 </head>
 
 <body>
@@ -232,16 +219,13 @@
   </div>
 </header>
 
-<!-- ✅ STUDENT PORTAL (Login/Signup compulsory) -->
+<!-- ✅ STUDENT PORTAL -->
 <section id="studentPortal">
   <div class="card">
     <div class="big-title">Student Portal Login</div>
-    <p class="muted" style="text-align:center;margin-top:8px;">
-      ✅ Website access only after login/signup
-    </p>
+    <p class="muted" style="text-align:center;margin-top:8px;">✅ Website access only after login/signup</p>
 
     <div id="authBox">
-
       <h3 style="color:#0b3c5d;margin-bottom:6px;">Login</h3>
       <input id="loginUser" placeholder="Email or Mobile">
       <input id="loginPass" type="password" placeholder="Password">
@@ -252,31 +236,21 @@
       <h3 style="color:#0b3c5d;margin-bottom:6px;">Create New Account</h3>
       <input id="regName" placeholder="Full Name">
       <input id="regEmail" placeholder="Email (example@gmail.com)">
-      <input id="regPhone" placeholder="Mobile (10 digits)"
-             maxlength="10"
+      <input id="regPhone" placeholder="Mobile (10 digits)" maxlength="10"
              oninput="this.value=this.value.replace(/[^0-9]/g,'');">
       <input id="regPass" type="password" placeholder="Create Password (min 4)">
       <button class="small-btn" onclick="registerStudent()">Create Account</button>
-
-      <div class="card" style="background:#f7f9fc;border:1px solid #e6eef7;box-shadow:none;">
-        <b>⚠️ OTP / Google Login Note:</b>
-        <div class="muted" style="margin-top:6px;">
-          OTP/Google login needs backend (Firebase). Abhi demo mode me manual verification ✅
-        </div>
-      </div>
     </div>
 
     <div id="authHiddenHint" class="hidden card" style="background:#f7f9fc;border:1px solid #e6eef7;box-shadow:none;">
-  <b>✅ Logged in!</b>
-  <div class="muted" style="margin-top:6px;">Go to “My Account” for dashboard.</div>
-  <button onclick="location.href='#myAccount'">Open My Account</button>
-</div>
-
-
+      <b>✅ Logged in!</b>
+      <div class="muted" style="margin-top:6px;">Go to “My Account” for dashboard.</div>
+      <button onclick="location.href='#myAccount'">Open My Account</button>
+    </div>
   </div>
 </section>
 
-<!-- ✅ MAIN WEBSITE CONTENT (LOCKED UNTIL LOGIN) -->
+<!-- ✅ HOME -->
 <section id="home" class="hidden">
   <div class="card">
     <div class="big-title">Welcome to Bright Career Classes</div>
@@ -288,15 +262,7 @@
       📚 Classes: <b>6 to 12</b> (CBSE • ICSE/ISC • UP Board)
     </div>
 
-    <div style="
-      margin-top:15px;
-      padding:12px;
-      border-radius:14px;
-      background:linear-gradient(90deg,#0b3c5d,#1c6ea4);
-      color:white;
-      text-align:center;
-      font-weight:800;
-    ">
+    <div style="margin-top:15px;padding:12px;border-radius:14px;background:linear-gradient(90deg,#0b3c5d,#1c6ea4);color:#fff;text-align:center;font-weight:900;">
       🎯 Demo Class Available • Weekly Tests • Best Notes Support ✅
     </div>
 
@@ -311,8 +277,7 @@
     <div class="social-box">
       <h3>Follow & Learn Online</h3>
 
-      <a class="social-link" target="_blank"
-         href="https://youtube.com/@brightcareerclasses-1?si=QNgL_2sOHDz6l-Vy">
+      <a class="social-link" target="_blank" href="https://youtube.com/@brightcareerclasses-1?si=QNgL_2sOHDz6l-Vy">
         <span class="icon"><img src="youtube.png" alt="YouTube"></span>
         <div class="text">
           <b>YouTube Classes</b>
@@ -320,8 +285,7 @@
         </div>
       </a>
 
-      <a class="social-link" target="_blank"
-         href="https://instagram.com/brightcareerclasses0701">
+      <a class="social-link" target="_blank" href="https://instagram.com/brightcareerclasses0701">
         <span class="icon"><img src="instagram.png" alt="Instagram"></span>
         <div class="text">
           <b>Instagram</b>
@@ -329,10 +293,10 @@
         </div>
       </a>
     </div>
-
   </div>
 </section>
 
+<!-- ✅ ABOUT -->
 <section id="about" class="hidden">
   <div class="card">
     <h2>About Our Classes</h2>
@@ -358,14 +322,13 @@
   </div>
 </section>
 
-<!-- ✅ ADMISSION FORM (ONLY LOGIN USER CAN SUBMIT) -->
+<!-- ✅ ADMISSION -->
 <section id="admission" class="hidden">
   <div class="card">
     <h2>Admission Form</h2>
     <p class="muted">✅ Submit admission request → Admin approval required</p>
 
     <input id="sname" placeholder="Student Name">
-
     <select id="sboard">
       <option value="">Select Board</option>
       <option value="CBSE">CBSE</option>
@@ -379,12 +342,7 @@
       <option>9</option><option>10</option><option>11</option><option>12</option>
     </select>
 
-    <!-- ✅ Phone only numbers + exact 10 digits -->
-    <input id="sphone"
-           type="tel"
-           inputmode="numeric"
-           pattern="[0-9]{10}"
-           maxlength="10"
+    <input id="sphone" type="tel" inputmode="numeric" pattern="[0-9]{10}" maxlength="10"
            placeholder="Mobile Number (10 digits)"
            oninput="this.value=this.value.replace(/[^0-9]/g,'');">
 
@@ -394,22 +352,17 @@
     <button onclick="submitAdmission()">Submit Admission Request</button>
 
     <div class="card" style="background:#f7f9fc;border:1px solid #e6eef7;box-shadow:none;">
-      <b>Status:</b>
-      <span id="admissionStatusText" class="pill red">Not Submitted</span>
-      <div class="muted" style="margin-top:6px;">
-        ✅ Admin approve karega tabhi Admission No + ID Card banega
-      </div>
+      <b>Status:</b> <span id="admissionStatusText" class="pill red">Not Submitted</span>
+      <div class="muted" style="margin-top:6px;">✅ Admin approve karega tabhi Admission No + ID Card banega</div>
     </div>
   </div>
 </section>
 
 <!-- ✅ MY ACCOUNT -->
 <section id="myAccount" class="hidden">
-  <div class="card" style="padding:0;overflow:hidden;">
-
+  <div class="card" style="padding:0;overflow:hidden;max-width:980px;">
     <div class="dash">
 
-      <!-- ✅ LEFT SIDE -->
       <div class="dash-left">
         <h2>👤 My Account</h2>
         <p>Student Dashboard</p>
@@ -422,10 +375,8 @@
         <button class="danger-btn" style="margin-top:12px;" onclick="logoutStudent()">Logout</button>
       </div>
 
-      <!-- ✅ RIGHT SIDE -->
       <div class="dash-right">
 
-        <!-- ✅ LOGIN SUCCESS BOX (SHIFTED HERE) -->
         <div id="myAccountTopBox" class="card" style="background:#f7f9fc;border:1px solid #e6eef7;box-shadow:none;">
           <h3 style="margin:0;color:#0b3c5d;">✅ Logged in Successfully</h3>
           <p class="muted" style="margin:6px 0 12px;">Now you can access full website.</p>
@@ -433,18 +384,15 @@
           <button class="danger-btn" onclick="logoutStudent()">Logout</button>
         </div>
 
-        <!-- ✅ Account Info -->
         <div id="accInfo" class="card" style="background:#f7f9fc;border:1px solid #e6eef7;box-shadow:none;">
           Loading...
         </div>
 
-        <!-- ✅ Admission Timeline -->
         <div id="accAdmissionBox" class="card" style="background:#fff;border:1px solid #eee;box-shadow:none;">
           <h3 style="margin-top:0;color:#0b3c5d;">📌 Admission Timeline</h3>
           <div id="accAdmissionTimeline" class="muted">No admission request yet.</div>
         </div>
 
-        <!-- ✅ ID Card only after Approved -->
         <div id="idCardWrap" class="idcard-wrap">
           <h3 style="text-align:center;color:#0b3c5d;margin-top:0;">✅ Your ID Card (Approved)</h3>
 
@@ -485,11 +433,10 @@
 
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ✅ ADMIN LOGIN -->
+<!-- ✅ ADMIN -->
 <section id="adminLogin">
   <div class="card">
     <h2>⚙ Admin Login</h2>
@@ -512,69 +459,43 @@
   </div>
 </section>
 
-<footer class="hidden" id="footerMain">
-  © 2026 Bright Career Classes • All Rights Reserved ✅
-</footer>
-
 <a class="call-float hidden" id="callBtn" href="tel:+919140466780">📞 Call Us</a>
-<a class="whatsapp-float-right pulse hidden" id="waBtn"
-   target="_blank"
+<a class="whatsapp-float-right pulse hidden" id="waBtn" target="_blank"
    href="https://wa.me/919140466780?text=Hello%20Bright%20Career%20Classes,%20I%20want%20admission">
   <img src="watsapp.png" alt="WhatsApp">
   <span>Admission on WhatsApp</span> 💬
 </a>
 
-<!-- ✅ QR + Download -->
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
 <script>
-/* =========================
-   ✅ BASIC UTILITIES
-========================= */
+/* MENU */
 function toggleMenu(){
   const m = document.getElementById("menu");
   m.style.display = (m.style.display === "block") ? "none" : "block";
 }
 function closeMenu(){ document.getElementById("menu").style.display = "none"; }
-
 function $(id){ return document.getElementById(id); }
 
-function isValidEmail(email){
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-function isValidPhone(phone){
-  return /^[0-9]{10}$/.test(phone);
-}
+function isValidEmail(email){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
+function isValidPhone(phone){ return /^[0-9]{10}$/.test(phone); }
 
 function loadDB(key, fallback){
   try{
     const v = JSON.parse(localStorage.getItem(key) || "null");
     return v ? v : fallback;
-  }catch(e){
-    return fallback;
-  }
+  }catch(e){ return fallback; }
 }
-function saveDB(key, data){
-  localStorage.setItem(key, JSON.stringify(data));
-}
+function saveDB(key, data){ localStorage.setItem(key, JSON.stringify(data)); }
 
-/* =========================
-   ✅ AUTH (Students)
-========================= */
-// users: [{id, name, email, phone, pass}]
+/* AUTH */
 function getUsers(){ return loadDB("bcc_users", []); }
 function setUsers(u){ saveDB("bcc_users", u); }
 
-function setSession(userId){
-  localStorage.setItem("bcc_session_user", userId);
-}
-function getSession(){
-  return localStorage.getItem("bcc_session_user");
-}
-function clearSession(){
-  localStorage.removeItem("bcc_session_user");
-}
+function setSession(userId){ localStorage.setItem("bcc_session_user", userId); }
+function getSession(){ return localStorage.getItem("bcc_session_user"); }
+function clearSession(){ localStorage.removeItem("bcc_session_user"); }
 
 function findUserByLogin(loginText){
   const users = getUsers();
@@ -587,44 +508,19 @@ function registerStudent(){
   const phone = $("regPhone").value.trim();
   const pass = $("regPass").value.trim();
 
-  if(!name || !email || !phone || !pass){
-    alert("❌ Please fill all fields");
-    return;
-  }
-  if(!isValidEmail(email)){
-    alert("❌ Enter valid email");
-    return;
-  }
-  if(!isValidPhone(phone)){
-    alert("❌ Enter valid 10-digit mobile number");
-    return;
-  }
-  if(pass.length < 4){
-    alert("❌ Password minimum 4 characters");
-    return;
-  }
+  if(!name || !email || !phone || !pass){ alert("❌ Please fill all fields"); return; }
+  if(!isValidEmail(email)){ alert("❌ Enter valid email"); return; }
+  if(!isValidPhone(phone)){ alert("❌ Enter valid 10-digit mobile number"); return; }
+  if(pass.length < 4){ alert("❌ Password minimum 4 characters"); return; }
 
   let users = getUsers();
+  if(users.some(u => u.email.toLowerCase() === email.toLowerCase())){ alert("❌ Email already registered"); return; }
+  if(users.some(u => u.phone === phone)){ alert("❌ Mobile already registered"); return; }
 
-  if(users.some(u => u.email.toLowerCase() === email.toLowerCase())){
-    alert("❌ Email already registered");
-    return;
-  }
-  if(users.some(u => u.phone === phone)){
-    alert("❌ Mobile already registered");
-    return;
-  }
-
-  const newUser = {
-    id: "U" + Date.now(),
-    name, email, phone,
-    pass
-  };
-
+  const newUser = { id: "U" + Date.now(), name, email, phone, pass };
   users.push(newUser);
   setUsers(users);
 
-  // auto login
   setSession(newUser.id);
   alert("✅ Account Created Successfully!");
   refreshUI();
@@ -633,21 +529,11 @@ function registerStudent(){
 function loginStudent(){
   const login = $("loginUser").value.trim();
   const pass = $("loginPass").value.trim();
-
-  if(!login || !pass){
-    alert("❌ Enter login + password");
-    return;
-  }
+  if(!login || !pass){ alert("❌ Enter login + password"); return; }
 
   const user = findUserByLogin(login);
-  if(!user){
-    alert("❌ Account not found");
-    return;
-  }
-  if(user.pass !== pass){
-    alert("❌ Wrong password");
-    return;
-  }
+  if(!user){ alert("❌ Account not found"); return; }
+  if(user.pass !== pass){ alert("❌ Wrong password"); return; }
 
   setSession(user.id);
   alert("✅ Login Successful");
@@ -660,37 +546,16 @@ function logoutStudent(){
   refreshUI();
 }
 
-/* =========================
-   ✅ Admissions System
-========================= */
-/*
-admissions: [
-  {serial, userId, name, board, cls, phone, email, address, status, admissionNo, studentId, time}
-]
-*/
+function goHome(){ location.href = "#home"; }
+
+/* Admissions */
 function getAdmissions(){ return loadDB("bcc_admissions", []); }
 function setAdmissions(a){ saveDB("bcc_admissions", a); }
 
-// ✅ Unique Student ID by phone (same phone => same id)
-function getOrCreateStudentID(name, phone){
-  let db = loadDB("bcc_students", {});
-  if(db[phone]) return db[phone].id;
-
-  const num = Math.floor(100000 + Math.random()*900000);
-  const sid = "BCC-" + num;
-
-  db[phone] = { id: sid, name: name };
-  saveDB("bcc_students", db);
-  return sid;
-}
-
-// ✅ Random admission number after approval
 function makeAdmissionNo(){
-  // Example: ADM-482913
   const num = Math.floor(100000 + Math.random()*900000);
   return "ADM-" + num;
 }
-
 function getMyAdmission(userId){
   const all = getAdmissions();
   return all.find(a => a.userId === userId) || null;
@@ -698,10 +563,7 @@ function getMyAdmission(userId){
 
 function submitAdmission(){
   const userId = getSession();
-  if(!userId){
-    alert("❌ Please login first");
-    return;
-  }
+  if(!userId){ alert("❌ Please login first"); return; }
 
   const name = $("sname").value.trim();
   const board = $("sboard").value.trim();
@@ -714,35 +576,17 @@ function submitAdmission(){
     alert("❌ Fill required fields (Name, Board, Class, Mobile, Email)");
     return;
   }
-  if(!isValidPhone(phone)){
-    alert("❌ Mobile must be exactly 10 digits (numbers only)");
-    return;
-  }
-  if(!isValidEmail(email)){
-    alert("❌ Enter valid email");
-    return;
-  }
+  if(!isValidPhone(phone)){ alert("❌ Mobile must be exactly 10 digits (numbers only)"); return; }
+  if(!isValidEmail(email)){ alert("❌ Enter valid email"); return; }
 
-  // extra safety: user phone/email must match account (verification)
   const me = getUsers().find(u => u.id === userId);
-  if(!me){
-    alert("❌ Login error, please login again");
-    logoutStudent();
-    return;
-  }
-  if(me.phone !== phone){
-    alert("❌ Mobile must match your account mobile!");
-    return;
-  }
-  if(me.email.toLowerCase() !== email.toLowerCase()){
-    alert("❌ Email must match your account email!");
-    return;
-  }
+  if(!me){ alert("❌ Login error. Please login again."); logoutStudent(); return; }
+  if(me.phone !== phone){ alert("❌ Mobile must match your account mobile!"); return; }
+  if(me.email.toLowerCase() !== email.toLowerCase()){ alert("❌ Email must match your account email!"); return; }
 
-  // prevent multiple admissions
   const existing = getMyAdmission(userId);
   if(existing){
-    alert("✅ Your admission request already submitted. Admin approval pending.");
+    alert("✅ Your admission request already submitted.");
     refreshAccount();
     return;
   }
@@ -750,28 +594,19 @@ function submitAdmission(){
   let all = getAdmissions();
   const serial = all.length + 1;
 
-  const studentId = getOrCreateStudentID(name, phone);
-
   all.push({
-    serial,
-    userId,
-    name, board, cls,
-    phone, email,
-    address,
-    status: "PENDING",
-    admissionNo: "",
-    studentId,
-    time: new Date().toLocaleString()
+    serial,userId,name,board,cls,phone,email,address,
+    status:"PENDING",admissionNo:"",
+    time:new Date().toLocaleString()
   });
 
   setAdmissions(all);
 
-  $("admissionStatusText").className = "pill red";
-  $("admissionStatusText").textContent = "Pending Approval";
+  $("admissionStatusText").className="pill red";
+  $("admissionStatusText").textContent="Pending Approval";
 
   alert("✅ Admission Submitted! Admin approval required.");
 
-  // optional: send message to owner (pending info)
   let msg =
     "📘 *New Admission Request (PENDING)*%0A%0A" +
     "S.No: " + serial + "%0A" +
@@ -784,69 +619,46 @@ function submitAdmission(){
     "✅ Admin panel me approve kare.";
 
   window.open("https://wa.me/919140466780?text=" + msg, "_blank");
-
   refreshAccount();
 }
 
-/* =========================
-   ✅ ADMIN
-========================= */
-let ADMIN_PASSWORD = "amitrai7074"; 
-// ✅ तुम अपना password यहाँ set कर देना:
-// example: ADMIN_PASSWORD = "amit6204";
+/* Admin */
+let ADMIN_PASSWORD = ""; // 👈 yaha apna password set kar do (example: "amit6204")
 
 function adminLogin(){
   const pass = $("adminPass").value.trim();
-
   if(!ADMIN_PASSWORD){
-    alert("⚠️ Admin password not set in code.\nPlease add ADMIN_PASSWORD inside script.");
+    alert("⚠️ Admin password not set in code.\nSet ADMIN_PASSWORD in script.");
     return;
   }
-
   if(pass === ADMIN_PASSWORD){
     localStorage.setItem("bcc_admin_session","1");
     alert("✅ Admin login successful");
     refreshAdmin();
-  }else{
-    alert("❌ Wrong admin password");
-  }
+  }else alert("❌ Wrong admin password");
 }
-
 function adminLogout(){
   localStorage.removeItem("bcc_admin_session");
   alert("Admin logged out ✅");
   refreshAdmin();
 }
-
-function isAdmin(){
-  return localStorage.getItem("bcc_admin_session") === "1";
-}
+function isAdmin(){ return localStorage.getItem("bcc_admin_session")==="1"; }
 
 function approveAdmission(serial){
-  if(!isAdmin()){
-    alert("❌ Admin not logged in");
-    return;
-  }
-
+  if(!isAdmin()){ alert("❌ Admin not logged in"); return; }
   let all = getAdmissions();
   const idx = all.findIndex(a => a.serial === serial);
-  if(idx === -1){ alert("Not found"); return; }
+  if(idx===-1){ alert("Not found"); return; }
 
-  if(all[idx].status === "APPROVED"){
-    alert("Already approved ✅");
-    return;
-  }
+  if(all[idx].status==="APPROVED"){ alert("Already approved ✅"); return; }
 
-  // generate admission no
   const admNo = makeAdmissionNo();
-  all[idx].status = "APPROVED";
-  all[idx].admissionNo = admNo;
-
+  all[idx].status="APPROVED";
+  all[idx].admissionNo=admNo;
   setAdmissions(all);
 
-  alert("✅ Approved! Admission No generated: " + admNo);
+  alert("✅ Approved! Admission No: " + admNo);
 
-  // WhatsApp owner message (approved)
   const a = all[idx];
   let msg =
     "✅ *Admission APPROVED*%0A%0A" +
@@ -859,7 +671,6 @@ function approveAdmission(serial){
     "✅ Student portal me ID Card available.";
 
   window.open("https://wa.me/919140466780?text=" + msg, "_blank");
-
   refreshAdmin();
   refreshAccount();
 }
@@ -869,116 +680,83 @@ function refreshAdmin(){
   if(isAdmin()){
     panel.classList.remove("hidden");
     renderAdminAdmissions();
-  }else{
-    panel.classList.add("hidden");
-  }
+  }else panel.classList.add("hidden");
 }
-
 function renderAdminAdmissions(){
   const all = getAdmissions();
-  if(all.length === 0){
-    $("adminAdmissionsList").innerHTML = "No admissions yet.";
-    return;
-  }
+  if(all.length===0){ $("adminAdmissionsList").innerHTML="No admissions yet."; return; }
 
-  let html = "";
+  let html="";
   all.forEach(a=>{
-    const statusPill = a.status === "APPROVED"
+    const pill = a.status==="APPROVED"
       ? `<span class="pill green">APPROVED</span>`
       : `<span class="pill red">PENDING</span>`;
-
     html += `
       <div style="border:1px solid #eee;padding:12px;border-radius:14px;margin:10px 0;background:#fff;">
-        <b>${a.serial}. ${a.name}</b> ${statusPill}<br>
+        <b>${a.serial}. ${a.name}</b> ${pill}<br>
         Board: ${a.board} | Class: ${a.cls}<br>
         Phone: ${a.phone}<br>
         Email: ${a.email}<br>
         Admission No: <b>${a.admissionNo ? a.admissionNo : "-"}</b><br>
         <small style="color:#666;">${a.time}</small><br><br>
-
-        ${
-          a.status === "PENDING"
-            ? `<button class="small-btn" onclick="approveAdmission(${a.serial})">✅ Approve</button>`
-            : `<button disabled style="opacity:.6;cursor:not-allowed;">Already Approved</button>`
+        ${a.status==="PENDING"
+          ? `<button class="small-btn" onclick="approveAdmission(${a.serial})">✅ Approve</button>`
+          : `<button disabled style="opacity:.6;cursor:not-allowed;">Already Approved</button>`
         }
-      </div>
-    `;
+      </div>`;
   });
-
-  $("adminAdmissionsList").innerHTML = html;
+  $("adminAdmissionsList").innerHTML=html;
 }
 
-/* =========================
-   ✅ STUDENT ACCOUNT UI
-========================= */
+/* Account */
 function refreshAccount(){
   const userId = getSession();
   if(!userId){
     $("accInfo").innerHTML = `<b>❌ Not logged in</b>`;
     $("accAdmissionTimeline").textContent = "Login first.";
-    $("idCardWrap").style.display = "none";
+    $("idCardWrap").style.display="none";
     return;
   }
-
-  const me = getUsers().find(u => u.id === userId);
-  if(!me){
-    $("accInfo").innerHTML = `<b>❌ User not found</b>`;
-    return;
-  }
-
+  const me = getUsers().find(u => u.id===userId);
   $("accInfo").innerHTML = `
     <b>Name:</b> ${me.name}<br>
     <b>Email:</b> ${me.email}<br>
     <b>Mobile:</b> ${me.phone}<br>
-    <div style="margin-top:10px;">
-      <span class="pill green">Account Verified (Demo)</span>
-    </div>
+    <div style="margin-top:10px;"><span class="pill green">Account Verified (Demo)</span></div>
   `;
 
   const adm = getMyAdmission(userId);
   if(!adm){
     $("accAdmissionTimeline").innerHTML = `
       <span class="pill red">No Admission Request</span><br>
-      <div class="muted" style="margin-top:6px;">Go to Admission form and submit ✅</div>
-    `;
-    $("idCardWrap").style.display = "none";
-    $("admissionStatusText").className = "pill red";
-    $("admissionStatusText").textContent = "Not Submitted";
+      <div class="muted" style="margin-top:6px;">Go to Admission form and submit ✅</div>`;
+    $("idCardWrap").style.display="none";
+    $("admissionStatusText").className="pill red";
+    $("admissionStatusText").textContent="Not Submitted";
     return;
   }
 
-  if(adm.status === "PENDING"){
+  if(adm.status==="PENDING"){
     $("accAdmissionTimeline").innerHTML = `
       <span class="pill red">Pending Approval</span><br>
-      <div class="muted" style="margin-top:6px;">
-        ✅ Admin approval required. After approval you will get Admission No.
-      </div>
-    `;
-    $("idCardWrap").style.display = "none";
-    $("admissionStatusText").className = "pill red";
-    $("admissionStatusText").textContent = "Pending Approval";
+      <div class="muted" style="margin-top:6px;">✅ Admin approval required. After approval ID card open hoga.</div>`;
+    $("idCardWrap").style.display="none";
+    $("admissionStatusText").className="pill red";
+    $("admissionStatusText").textContent="Pending Approval";
     return;
   }
 
-  // APPROVED
   $("accAdmissionTimeline").innerHTML = `
     <span class="pill green">Approved ✅</span><br>
     <div style="margin-top:8px;">
       <b>Admission No:</b> ${adm.admissionNo}<br>
       <b>Serial No:</b> ${adm.serial}
-    </div>
-  `;
-  $("admissionStatusText").className = "pill green";
-  $("admissionStatusText").textContent = "Approved ✅";
+    </div>`;
+  $("admissionStatusText").className="pill green";
+  $("admissionStatusText").textContent="Approved ✅";
 
-  // Now show ID Card (only if admission no exists)
-  if(!adm.admissionNo){
-    $("idCardWrap").style.display = "none";
-    return;
-  }
+  if(!adm.admissionNo){ $("idCardWrap").style.display="none"; return; }
 
-  // Student ID must be based on admission no (your twist)
-  // ✅ We'll make ID = "BCC-" + last 6 digits of admission no random part
   const studentID = "BCC-" + adm.admissionNo.replace("ADM-","");
 
   $("cardName").textContent = adm.name;
@@ -989,7 +767,6 @@ function refreshAccount(){
   $("cardAdmNo").textContent = adm.admissionNo;
   $("cardID").textContent = studentID;
 
-  // QR includes admission no
   const qrData =
     "Bright Career Classes | Verified Student\n" +
     "Admission No: " + adm.admissionNo + "\n" +
@@ -1000,33 +777,26 @@ function refreshAccount(){
     "Phone: " + adm.phone + "\n" +
     "Email: " + adm.email;
 
-  $("qrBox").innerHTML = "";
-  new QRCode($("qrBox"), { text: qrData, width: 100, height: 100 });
-
-  $("idCardWrap").style.display = "block";
+  $("qrBox").innerHTML="";
+  new QRCode($("qrBox"), {text: qrData, width:100, height:100});
+  $("idCardWrap").style.display="block";
 }
 
-/* ✅ Download ID Card */
 function downloadIDCardPNG(){
   const node = $("idCard");
-  html2canvas(node, {scale: 2}).then(canvas=>{
-    const link = document.createElement("a");
-    link.download = "BCC_IDCard.png";
-    link.href = canvas.toDataURL("image/png");
+  html2canvas(node,{scale:2}).then(canvas=>{
+    const link=document.createElement("a");
+    link.download="BCC_IDCard.png";
+    link.href=canvas.toDataURL("image/png");
     link.click();
   });
 }
 
-/* ✅ WhatsApp message with all details */
 function openWhatsappWithID(){
   const userId = getSession();
   if(!userId){ alert("Login first"); return; }
-
   const adm = getMyAdmission(userId);
-  if(!adm || adm.status !== "APPROVED"){
-    alert("❌ Admin approval required");
-    return;
-  }
+  if(!adm || adm.status!=="APPROVED"){ alert("❌ Admin approval required"); return; }
 
   const studentID = "BCC-" + adm.admissionNo.replace("ADM-","");
 
@@ -1041,53 +811,32 @@ function openWhatsappWithID(){
     "✉️ Email: " + adm.email + "%0A%0A" +
     "✅ ID Card image downloaded. Attach & send ✅";
 
-  // Auto-download ID Card too (so you can attach)
   downloadIDCardPNG();
-
   window.open("https://wa.me/919140466780?text=" + msg, "_blank");
 }
 
-/* =========================
-   ✅ UI LOCK/UNLOCK
-========================= */
+/* UI refresh */
 function showMainSections(isLoggedIn){
-  const ids = ["home","about","admission","myAccount"];
-  ids.forEach(id=>{
-    const el = document.getElementById(id);
-    if(isLoggedIn) el.classList.remove("hidden");
-    else el.classList.add("hidden");
+  ["home","about","admission","myAccount"].forEach(id=>{
+    $(id).classList.toggle("hidden", !isLoggedIn);
   });
-
-  // footer + float buttons only after login
-  $("footerMain").classList.toggle("hidden", !isLoggedIn);
   $("callBtn").classList.toggle("hidden", !isLoggedIn);
   $("waBtn").classList.toggle("hidden", !isLoggedIn);
 }
 
-function goHome(){
-  location.href = "#home";
-}
-
-/* =========================
-   ✅ INIT / REFRESH UI
-========================= */
 function refreshUI(){
   const userId = getSession();
   const loggedIn = !!userId;
 
-  // auth boxes
   $("authBox").classList.toggle("hidden", loggedIn);
- $("authHiddenHint").classList.toggle("hidden", !loggedIn);
-
+  $("authHiddenHint").classList.toggle("hidden", !loggedIn);
 
   showMainSections(loggedIn);
 
-  if(loggedIn){
-    refreshAccount();
-  }else{
-    // reset admission status
-    $("admissionStatusText").className = "pill red";
-    $("admissionStatusText").textContent = "Not Submitted";
+  if(loggedIn){ refreshAccount(); }
+  else{
+    $("admissionStatusText").className="pill red";
+    $("admissionStatusText").textContent="Not Submitted";
   }
 
   refreshAdmin();
@@ -1098,5 +847,3 @@ refreshUI();
 
 </body>
 </html>
-
-
