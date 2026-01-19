@@ -193,6 +193,15 @@
     .moti{font-size:16px}
     .dropdown{width:230px}
   }
+
+  /* ✅ Mobile Friendly */
+  @media(max-width:500px){
+    .card{padding:16px;border-radius:14px}
+    input,select,textarea,button{font-size:15px;padding:12px;border-radius:12px}
+    .menu-btn{width:40px;height:40px;line-height:40px}
+    .whatsapp-float-right{right:10px;bottom:80px;padding:10px 12px;font-size:13px}
+    .call-float{right:10px;bottom:20px;padding:10px 12px;font-size:13px}
+  }
 </style>
 </head>
 
@@ -215,7 +224,6 @@
     <a href="#about" onclick="closeMenu()">ℹ About</a>
     <a href="#admission" onclick="closeMenu()">📝 Admission</a>
     <a href="#myAccount" onclick="closeMenu()">👤 My Account</a>
-    <a href="#adminLogin" onclick="closeMenu()">⚙ Admin Login</a>
   </div>
 </header>
 
@@ -247,6 +255,16 @@
       <div class="muted" style="margin-top:6px;">Go to “My Account” for dashboard.</div>
       <button onclick="location.href='#myAccount'">Open My Account</button>
     </div>
+
+    <!-- ✅ Secret Admin Button (Only Front Page) -->
+    <div style="text-align:center;margin-top:12px;">
+      <button id="secretAdminBtn" class="small-btn"
+        style="max-width:320px;width:100%;display:none;font-size:15px;padding:12px;border-radius:14px;"
+        onclick="openAdminLogin()">
+        ⚙ Admin Access (Only Admin)
+      </button>
+    </div>
+
   </div>
 </section>
 
@@ -269,7 +287,6 @@
     <div class="quick-nav">
       <a href="#admission">📝 Admission</a>
       <a href="#myAccount">👤 My Account</a>
-      <a href="#adminLogin">⚙ Admin</a>
     </div>
 
     <hr>
@@ -370,7 +387,6 @@
         <a class="dash-link" href="#myAccount">✅ Account Status</a>
         <a class="dash-link" href="#admission">📝 Admission Form</a>
         <a class="dash-link" href="#home">🏠 Home</a>
-        <a class="dash-link" href="#adminLogin">⚙ Admin Login</a>
 
         <button class="danger-btn" style="margin-top:12px;" onclick="logoutStudent()">Logout</button>
       </div>
@@ -436,8 +452,8 @@
   </div>
 </section>
 
-<!-- ✅ ADMIN -->
-<section id="adminLogin">
+<!-- ✅ ADMIN (Hidden Always for Students) -->
+<section id="adminLogin" class="hidden">
   <div class="card">
     <h2>⚙ Admin Login</h2>
     <p class="muted">✅ Only Admin can approve admission</p>
@@ -449,7 +465,6 @@
       <hr>
       <h2 style="margin-top:0;color:#0b3c5d;">✅ Admin Panel</h2>
       <button class="danger-btn" onclick="adminLogout()">Logout Admin</button>
-<button class="small-btn" onclick="location.href='#home'">🏠 Go to Home</button>
 
       <hr>
       <h3 style="color:#0b3c5d;margin-bottom:6px;">Admissions (Serial Wise)</h3>
@@ -478,6 +493,14 @@ function toggleMenu(){
 }
 function closeMenu(){ document.getElementById("menu").style.display = "none"; }
 function $(id){ return document.getElementById(id); }
+
+document.addEventListener("click", function(e){
+  const menu = $("menu");
+  const btn = document.querySelector(".menu-btn");
+  if(menu.style.display === "block" && !menu.contains(e.target) && e.target !== btn){
+    closeMenu();
+  }
+});
 
 function isValidEmail(email){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
 function isValidPhone(phone){ return /^[0-9]{10}$/.test(phone); }
@@ -624,7 +647,7 @@ function submitAdmission(){
 }
 
 /* Admin */
-let ADMIN_PASSWORD = "amitrai7074"; // 👈 yaha apna password set kar do (example: "amit6204")
+let ADMIN_PASSWORD = "amit6204"; // ✅ apna password yaha set karo
 
 function adminLogin(){
   const pass = $("adminPass").value.trim();
@@ -636,12 +659,14 @@ function adminLogin(){
     localStorage.setItem("bcc_admin_session","1");
     alert("✅ Admin login successful");
     refreshAdmin();
+    refreshUI();
   }else alert("❌ Wrong admin password");
 }
 function adminLogout(){
   localStorage.removeItem("bcc_admin_session");
   alert("Admin logged out ✅");
   refreshAdmin();
+  refreshUI();
 }
 function isAdmin(){ return localStorage.getItem("bcc_admin_session")==="1"; }
 
@@ -707,6 +732,13 @@ function renderAdminAdmissions(){
       </div>`;
   });
   $("adminAdmissionsList").innerHTML=html;
+}
+
+/* ✅ Secret Admin Open */
+function openAdminLogin(){
+  $("adminLogin").classList.remove("hidden");
+  closeMenu();
+  setTimeout(()=>{ location.href="#adminLogin"; }, 150);
 }
 
 /* Account */
@@ -817,19 +849,13 @@ function openWhatsappWithID(){
 }
 
 /* UI refresh */
-function showMainSections(){
-  const loggedIn = !!getSession();
-  const admin = isAdmin();
-
-  const allow = loggedIn || admin; // ✅ admin bhi website खोल सकता है
-
+function showMainSections(isLoggedIn){
   ["home","about","admission","myAccount"].forEach(id=>{
-    $(id).classList.toggle("hidden", !allow);
+    $(id).classList.toggle("hidden", !isLoggedIn);
   });
-  $("callBtn").classList.toggle("hidden", !allow);
-  $("waBtn").classList.toggle("hidden", !allow);
+  $("callBtn").classList.toggle("hidden", !isLoggedIn);
+  $("waBtn").classList.toggle("hidden", !isLoggedIn);
 }
-
 
 function refreshUI(){
   const userId = getSession();
@@ -838,13 +864,19 @@ function refreshUI(){
   $("authBox").classList.toggle("hidden", loggedIn);
   $("authHiddenHint").classList.toggle("hidden", !loggedIn);
 
-  showMainSections();
+  showMainSections(loggedIn);
 
   if(loggedIn){ refreshAccount(); }
   else{
     $("admissionStatusText").className="pill red";
     $("admissionStatusText").textContent="Not Submitted";
   }
+
+  // ✅ Student ke liye admin section always hidden
+  $("adminLogin").classList.add("hidden");
+
+  // ✅ Secret Admin button only admin session me show
+  $("secretAdminBtn").style.display = isAdmin() ? "block" : "none";
 
   refreshAdmin();
 }
@@ -854,5 +886,3 @@ refreshUI();
 
 </body>
 </html>
-
-
