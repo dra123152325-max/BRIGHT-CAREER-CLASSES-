@@ -20,7 +20,6 @@
   body{
     margin:0;font-family:'Poppins',Arial,sans-serif;background:#f4f6fb;position:relative;
   }
-  /* watermark logo full page */
   body::before{
     content:"";position:fixed;inset:0;
     background-image:url("bcc.png");
@@ -146,24 +145,6 @@
   }
   .id-footer{padding:12px 14px;background:#fff;border-top:1px solid #eee;font-size:12px;color:#666;text-align:center}
 
-  /* ✅ My Account Side Dashboard */
-  .dash{
-    display:flex;gap:0;min-height:420px;border-radius:16px;overflow:hidden;
-  }
-  .dash-left{
-    width:270px;background:linear-gradient(180deg,#0b3c5d,#1c6ea4);
-    color:#fff;padding:18px;
-  }
-  .dash-left h2{margin:0 0 12px;font-size:18px;}
-  .dash-left p{margin:0 0 14px;font-size:13px;opacity:.9;}
-  .dash-link{
-    display:block;color:#fff;text-decoration:none;font-weight:900;
-    padding:10px 12px;border-radius:12px;background:rgba(255,255,255,0.10);
-    margin-bottom:10px;
-  }
-  .dash-link:hover{background:rgba(255,255,255,0.18);}
-  .dash-right{flex:1;padding:18px;background:rgba(255,255,255,0.97);}
-
   /* Floating */
   .call-float{
     position:fixed;right:15px;bottom:25px;background:#007bff;color:#fff;
@@ -183,18 +164,12 @@
     100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
   }
 
-  @media(max-width:800px){
-    .dash{flex-direction:column}
-    .dash-left{width:100%}
-  }
   @media(max-width:768px){
     header h1{font-size:16px}
     .big-title{font-size:22px}
     .moti{font-size:16px}
     .dropdown{width:230px}
   }
-
-  /* ✅ Mobile Friendly */
   @media(max-width:500px){
     .card{padding:16px;border-radius:14px}
     input,select,textarea,button{font-size:15px;padding:12px;border-radius:12px}
@@ -219,54 +194,13 @@
   <div class="menu-btn" onclick="toggleMenu()">⋮</div>
 
   <div class="dropdown" id="menu">
-    <a href="#studentPortal" onclick="closeMenu()">🔐 Student Portal</a>
     <a href="#home" onclick="closeMenu()">🏠 Home</a>
     <a href="#about" onclick="closeMenu()">ℹ About</a>
     <a href="#admission" onclick="closeMenu()">📝 Admission</a>
-    <a href="#myAccount" onclick="closeMenu()">👤 My Account</a>
+    <a href="#statusCheck" onclick="closeMenu()">✅ Status Check</a>
+    <a href="#adminLogin" onclick="closeMenu()">⚙ Admin</a>
   </div>
 </header>
-
-<!-- ✅ STUDENT PORTAL -->
-<section id="studentPortal">
-  <div class="card">
-    <div class="big-title">Student Portal Login</div>
-    <p class="muted" style="text-align:center;margin-top:8px;">✅ Website access only after login/signup</p>
-
-    <div id="authBox">
-      <h3 style="color:#0b3c5d;margin-bottom:6px;">Login</h3>
-      <input id="loginUser" placeholder="Email or Mobile">
-      <input id="loginPass" type="password" placeholder="Password">
-      <button onclick="loginStudent()">Login</button>
-
-      <p class="muted" style="text-align:center;margin:10px 0;">OR</p>
-
-      <h3 style="color:#0b3c5d;margin-bottom:6px;">Create New Account</h3>
-      <input id="regName" placeholder="Full Name">
-      <input id="regEmail" placeholder="Email (example@gmail.com)">
-      <input id="regPhone" placeholder="Mobile (10 digits)" maxlength="10"
-             oninput="this.value=this.value.replace(/[^0-9]/g,'');">
-      <input id="regPass" type="password" placeholder="Create Password (min 4)">
-      <button class="small-btn" onclick="registerStudent()">Create Account</button>
-    </div>
-
-    <div id="authHiddenHint" class="hidden card" style="background:#f7f9fc;border:1px solid #e6eef7;box-shadow:none;">
-      <b>✅ Logged in!</b>
-      <div class="muted" style="margin-top:6px;">Go to “My Account” for dashboard.</div>
-      <button onclick="location.href='#myAccount'">Open My Account</button>
-    </div>
-
-    <!-- ✅ Secret Admin Button (Only Front Page) -->
-    <div style="text-align:center;margin-top:12px;">
-      <button id="secretAdminBtn" class="small-btn"
-        style="max-width:320px;width:100%;display:none;font-size:15px;padding:12px;border-radius:14px;"
-        onclick="openAdminLogin()">
-        ⚙ Admin Access (Only Admin)
-      </button>
-    </div>
-
-  </div>
-</section>
 
 <!-- ✅ HOME -->
 <section id="home" class="hidden">
@@ -286,7 +220,8 @@
 
     <div class="quick-nav">
       <a href="#admission">📝 Admission</a>
-      <a href="#myAccount">👤 My Account</a>
+      <a href="#statusCheck">✅ Status Check</a>
+      <a href="#adminLogin">⚙ Admin</a>
     </div>
 
     <hr>
@@ -375,84 +310,62 @@
   </div>
 </section>
 
-<!-- ✅ MY ACCOUNT -->
-<section id="myAccount" class="hidden">
-  <div class="card" style="padding:0;overflow:hidden;max-width:980px;">
-    <div class="dash">
+<!-- ✅ STATUS CHECK -->
+<section id="statusCheck" class="hidden">
+  <div class="card">
+    <h2>✅ Check Admission Status</h2>
+    <p class="muted">Enter your Mobile Number to check your admission approval + ID Card.</p>
 
-      <div class="dash-left">
-        <h2>👤 My Account</h2>
-        <p>Student Dashboard</p>
+    <input id="checkPhone" placeholder="Enter Mobile Number (10 digits)" maxlength="10"
+      oninput="this.value=this.value.replace(/[^0-9]/g,'');">
 
-        <a class="dash-link" href="#myAccount">✅ Account Status</a>
-        <a class="dash-link" href="#admission">📝 Admission Form</a>
-        <a class="dash-link" href="#home">🏠 Home</a>
+    <button class="small-btn" onclick="checkStatus()">🔍 Check Status</button>
 
-        <button class="danger-btn" style="margin-top:12px;" onclick="logoutStudent()">Logout</button>
-      </div>
+    <div id="statusResult" class="card" style="margin-top:15px;background:#f7f9fc;border:1px solid #e6eef7;box-shadow:none;">
+      ✅ Result will show here...
+    </div>
 
-      <div class="dash-right">
+    <div id="statusIdCardWrap" class="idcard-wrap">
+      <h3 style="text-align:center;color:#0b3c5d;margin-top:0;">✅ Your ID Card (Approved)</h3>
 
-        <div id="myAccountTopBox" class="card" style="background:#f7f9fc;border:1px solid #e6eef7;box-shadow:none;">
-          <h3 style="margin:0;color:#0b3c5d;">✅ Logged in Successfully</h3>
-          <p class="muted" style="margin:6px 0 12px;">Now you can access full website.</p>
-          <button onclick="goHome()">Go to Home</button>
-          <button class="danger-btn" onclick="logoutStudent()">Logout</button>
+      <div id="statusIdCard" class="idcard">
+        <div class="id-top">
+          <img src="bcc.png" alt="Logo">
+          <div>
+            <div class="t1">Bright Career Classes</div>
+            <div class="t2">Official Student ID Card</div>
+          </div>
         </div>
 
-        <div id="accInfo" class="card" style="background:#f7f9fc;border:1px solid #e6eef7;box-shadow:none;">
-          Loading...
-        </div>
+        <div class="id-body">
+          <div class="id-left">
+            <div class="id-row"><b>Name:</b> <span id="sCardName">-</span></div>
+            <div class="id-row"><b>Board:</b> <span id="sCardBoard">-</span></div>
+            <div class="id-row"><b>Class:</b> <span id="sCardClass">-</span></div>
+            <div class="id-row"><b>Phone:</b> <span id="sCardPhone">-</span></div>
+            <div class="id-row"><b>Email:</b> <span id="sCardEmail">-</span></div>
+            <div class="id-row"><b>Admission No:</b> <span id="sCardAdmNo">-</span></div>
 
-        <div id="accAdmissionBox" class="card" style="background:#fff;border:1px solid #eee;box-shadow:none;">
-          <h3 style="margin-top:0;color:#0b3c5d;">📌 Admission Timeline</h3>
-          <div id="accAdmissionTimeline" class="muted">No admission request yet.</div>
-        </div>
-
-        <div id="idCardWrap" class="idcard-wrap">
-          <h3 style="text-align:center;color:#0b3c5d;margin-top:0;">✅ Your ID Card (Approved)</h3>
-
-          <div id="idCard" class="idcard">
-            <div class="id-top">
-              <img src="bcc.png" alt="Logo">
-              <div>
-                <div class="t1">Bright Career Classes</div>
-                <div class="t2">Official Student ID Card</div>
-              </div>
-            </div>
-
-            <div class="id-body">
-              <div class="id-left">
-                <div class="id-row"><b>Name:</b> <span id="cardName">-</span></div>
-                <div class="id-row"><b>Board:</b> <span id="cardBoard">-</span></div>
-                <div class="id-row"><b>Class:</b> <span id="cardClass">-</span></div>
-                <div class="id-row"><b>Phone:</b> <span id="cardPhone">-</span></div>
-                <div class="id-row"><b>Email:</b> <span id="cardEmail">-</span></div>
-                <div class="id-row"><b>Admission No:</b> <span id="cardAdmNo">-</span></div>
-
-                <div class="student-id">ID: <span id="cardID">BCC-000000</span></div>
-              </div>
-
-              <div class="qr-box">
-                <div id="qrBox"></div>
-              </div>
-            </div>
-
-            <div class="id-footer">
-              ✅ Scan QR to verify • Bright Career Classes
-            </div>
+            <div class="student-id">ID: <span id="sCardID">BCC-000000</span></div>
           </div>
 
-          <button style="margin-top:12px;" onclick="downloadIDCardPNG()">⬇ Download ID Card (PNG)</button>
-          <button class="small-btn" onclick="openWhatsappWithID()">💬 Send ID + Details on WhatsApp</button>
+          <div class="qr-box">
+            <div id="sQrBox"></div>
+          </div>
         </div>
 
+        <div class="id-footer">
+          ✅ Scan QR to verify • Bright Career Classes
+        </div>
       </div>
+
+      <button style="margin-top:12px;" onclick="downloadStatusIDCardPNG()">⬇ Download ID Card (PNG)</button>
     </div>
+
   </div>
 </section>
 
-<!-- ✅ ADMIN (Hidden Always for Students) -->
+<!-- ✅ ADMIN -->
 <section id="adminLogin" class="hidden">
   <div class="card">
     <h2>⚙ Admin Login</h2>
@@ -486,7 +399,6 @@
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
 <script>
-/* MENU */
 function toggleMenu(){
   const m = document.getElementById("menu");
   m.style.display = (m.style.display === "block") ? "none" : "block";
@@ -513,66 +425,7 @@ function loadDB(key, fallback){
 }
 function saveDB(key, data){ localStorage.setItem(key, JSON.stringify(data)); }
 
-/* AUTH */
-function getUsers(){ return loadDB("bcc_users", []); }
-function setUsers(u){ saveDB("bcc_users", u); }
-
-function setSession(userId){ localStorage.setItem("bcc_session_user", userId); }
-function getSession(){ return localStorage.getItem("bcc_session_user"); }
-function clearSession(){ localStorage.removeItem("bcc_session_user"); }
-
-function findUserByLogin(loginText){
-  const users = getUsers();
-  return users.find(u => u.email.toLowerCase() === loginText.toLowerCase() || u.phone === loginText);
-}
-
-function registerStudent(){
-  const name = $("regName").value.trim();
-  const email = $("regEmail").value.trim();
-  const phone = $("regPhone").value.trim();
-  const pass = $("regPass").value.trim();
-
-  if(!name || !email || !phone || !pass){ alert("❌ Please fill all fields"); return; }
-  if(!isValidEmail(email)){ alert("❌ Enter valid email"); return; }
-  if(!isValidPhone(phone)){ alert("❌ Enter valid 10-digit mobile number"); return; }
-  if(pass.length < 4){ alert("❌ Password minimum 4 characters"); return; }
-
-  let users = getUsers();
-  if(users.some(u => u.email.toLowerCase() === email.toLowerCase())){ alert("❌ Email already registered"); return; }
-  if(users.some(u => u.phone === phone)){ alert("❌ Mobile already registered"); return; }
-
-  const newUser = { id: "U" + Date.now(), name, email, phone, pass };
-  users.push(newUser);
-  setUsers(users);
-
-  setSession(newUser.id);
-  alert("✅ Account Created Successfully!");
-  refreshUI();
-}
-
-function loginStudent(){
-  const login = $("loginUser").value.trim();
-  const pass = $("loginPass").value.trim();
-  if(!login || !pass){ alert("❌ Enter login + password"); return; }
-
-  const user = findUserByLogin(login);
-  if(!user){ alert("❌ Account not found"); return; }
-  if(user.pass !== pass){ alert("❌ Wrong password"); return; }
-
-  setSession(user.id);
-  alert("✅ Login Successful");
-  refreshUI();
-}
-
-function logoutStudent(){
-  clearSession();
-  alert("Logged out ✅");
-  refreshUI();
-}
-
-function goHome(){ location.href = "#home"; }
-
-/* Admissions */
+/* DB */
 function getAdmissions(){ return loadDB("bcc_admissions", []); }
 function setAdmissions(a){ saveDB("bcc_admissions", a); }
 
@@ -580,15 +433,9 @@ function makeAdmissionNo(){
   const num = Math.floor(100000 + Math.random()*900000);
   return "ADM-" + num;
 }
-function getMyAdmission(userId){
-  const all = getAdmissions();
-  return all.find(a => a.userId === userId) || null;
-}
 
+/* Admission Submit */
 function submitAdmission(){
-  const userId = getSession();
-  if(!userId){ alert("❌ Please login first"); return; }
-
   const name = $("sname").value.trim();
   const board = $("sboard").value.trim();
   const cls = $("sclass").value.trim();
@@ -603,23 +450,20 @@ function submitAdmission(){
   if(!isValidPhone(phone)){ alert("❌ Mobile must be exactly 10 digits (numbers only)"); return; }
   if(!isValidEmail(email)){ alert("❌ Enter valid email"); return; }
 
-  const me = getUsers().find(u => u.id === userId);
-  if(!me){ alert("❌ Login error. Please login again."); logoutStudent(); return; }
-  if(me.phone !== phone){ alert("❌ Mobile must match your account mobile!"); return; }
-  if(me.email.toLowerCase() !== email.toLowerCase()){ alert("❌ Email must match your account email!"); return; }
+  let all = getAdmissions();
 
-  const existing = getMyAdmission(userId);
-  if(existing){
-    alert("✅ Your admission request already submitted.");
-    refreshAccount();
+  // ✅ duplicate submit check
+  if(all.some(a => a.phone === phone)){
+    alert("✅ This mobile number already submitted admission request.");
     return;
   }
 
-  let all = getAdmissions();
   const serial = all.length + 1;
 
   all.push({
-    serial,userId,name,board,cls,phone,email,address,
+    serial,
+    key: phone,
+    name,board,cls,phone,email,address,
     status:"PENDING",admissionNo:"",
     time:new Date().toLocaleString()
   });
@@ -643,38 +487,33 @@ function submitAdmission(){
     "✅ Admin panel me approve kare.";
 
   window.open("https://wa.me/919140466780?text=" + msg, "_blank");
-  refreshAccount();
 }
 
 /* Admin */
-let ADMIN_PASSWORD = "amit6204"; // ✅ apna password yaha set karo
+let ADMIN_PASSWORD = "amit6204";
 
 function adminLogin(){
   const pass = $("adminPass").value.trim();
-  if(!ADMIN_PASSWORD){
-    alert("⚠️ Admin password not set in code.\nSet ADMIN_PASSWORD in script.");
-    return;
-  }
   if(pass === ADMIN_PASSWORD){
     localStorage.setItem("bcc_admin_session","1");
     alert("✅ Admin login successful");
     refreshAdmin();
-    refreshUI();
-    // ✅ Admin ko main page/home access
-location.href = "#home";
-
-  }else alert("❌ Wrong admin password");
+    location.href="#home";
+  }else{
+    alert("❌ Wrong admin password");
+  }
 }
 function adminLogout(){
   localStorage.removeItem("bcc_admin_session");
   alert("Admin logged out ✅");
   refreshAdmin();
-  refreshUI();
+  location.href="#home";
 }
 function isAdmin(){ return localStorage.getItem("bcc_admin_session")==="1"; }
 
 function approveAdmission(serial){
   if(!isAdmin()){ alert("❌ Admin not logged in"); return; }
+
   let all = getAdmissions();
   const idx = all.findIndex(a => a.serial === serial);
   if(idx===-1){ alert("Not found"); return; }
@@ -697,11 +536,10 @@ function approveAdmission(serial){
     "📚 Class: " + a.cls + "%0A" +
     "🏫 Board: " + a.board + "%0A" +
     "📞 Phone: " + a.phone + "%0A%0A" +
-    "✅ Student portal me ID Card available.";
+    "✅ Student status check page me ID Card available.";
 
   window.open("https://wa.me/919140466780?text=" + msg, "_blank");
   refreshAdmin();
-  refreshAccount();
 }
 
 function refreshAdmin(){
@@ -709,8 +547,13 @@ function refreshAdmin(){
   if(isAdmin()){
     panel.classList.remove("hidden");
     renderAdminAdmissions();
-  }else panel.classList.add("hidden");
+    $("adminLogin").classList.remove("hidden");
+  }else{
+    panel.classList.add("hidden");
+    $("adminLogin").classList.add("hidden");
+  }
 }
+
 function renderAdminAdmissions(){
   const all = getAdmissions();
   if(all.length===0){ $("adminAdmissionsList").innerHTML="No admissions yet."; return; }
@@ -737,71 +580,58 @@ function renderAdminAdmissions(){
   $("adminAdmissionsList").innerHTML=html;
 }
 
-/* ✅ Secret Admin Open */
-function openAdminLogin(){
-  $("adminLogin").classList.remove("hidden");
-  closeMenu();
-  setTimeout(()=>{ location.href="#adminLogin"; }, 150);
-}
+/* Status Check */
+function checkStatus(){
+  const phone = $("checkPhone").value.trim();
 
-/* Account */
-function refreshAccount(){
-  const userId = getSession();
-  if(!userId){
-    $("accInfo").innerHTML = `<b>❌ Not logged in</b>`;
-    $("accAdmissionTimeline").textContent = "Login first.";
-    $("idCardWrap").style.display="none";
+  if(!isValidPhone(phone)){
+    $("statusResult").innerHTML = `<span class="pill red">❌ Invalid Number</span><br><br>
+    Enter valid 10-digit mobile number ✅`;
+    $("statusIdCardWrap").style.display="none";
     return;
   }
-  const me = getUsers().find(u => u.id===userId);
-  $("accInfo").innerHTML = `
-    <b>Name:</b> ${me.name}<br>
-    <b>Email:</b> ${me.email}<br>
-    <b>Mobile:</b> ${me.phone}<br>
-    <div style="margin-top:10px;"><span class="pill green">Account Verified (Demo)</span></div>
-  `;
 
-  const adm = getMyAdmission(userId);
+  const all = getAdmissions();
+  const adm = all.find(a => a.phone === phone);
+
   if(!adm){
-    $("accAdmissionTimeline").innerHTML = `
-      <span class="pill red">No Admission Request</span><br>
-      <div class="muted" style="margin-top:6px;">Go to Admission form and submit ✅</div>`;
-    $("idCardWrap").style.display="none";
-    $("admissionStatusText").className="pill red";
-    $("admissionStatusText").textContent="Not Submitted";
+    $("statusResult").innerHTML = `
+      <span class="pill red">❌ Not Found</span><br><br>
+      No admission request found for this number: <b>${phone}</b>`;
+    $("statusIdCardWrap").style.display="none";
     return;
   }
 
-  if(adm.status==="PENDING"){
-    $("accAdmissionTimeline").innerHTML = `
-      <span class="pill red">Pending Approval</span><br>
-      <div class="muted" style="margin-top:6px;">✅ Admin approval required. After approval ID card open hoga.</div>`;
-    $("idCardWrap").style.display="none";
-    $("admissionStatusText").className="pill red";
-    $("admissionStatusText").textContent="Pending Approval";
+  if(adm.status === "PENDING"){
+    $("statusResult").innerHTML = `
+      <span class="pill red">⏳ Pending Approval</span><br><br>
+      <b>Name:</b> ${adm.name}<br>
+      <b>Class:</b> ${adm.cls}<br>
+      <b>Board:</b> ${adm.board}<br>
+      <b>Mobile:</b> ${adm.phone}<br><br>
+      ✅ Admin approval required.`;
+    $("statusIdCardWrap").style.display="none";
     return;
   }
 
-  $("accAdmissionTimeline").innerHTML = `
-    <span class="pill green">Approved ✅</span><br>
-    <div style="margin-top:8px;">
-      <b>Admission No:</b> ${adm.admissionNo}<br>
-      <b>Serial No:</b> ${adm.serial}
-    </div>`;
-  $("admissionStatusText").className="pill green";
-  $("admissionStatusText").textContent="Approved ✅";
-
-  if(!adm.admissionNo){ $("idCardWrap").style.display="none"; return; }
+  $("statusResult").innerHTML = `
+    <span class="pill green">✅ Approved</span><br><br>
+    <b>Name:</b> ${adm.name}<br>
+    <b>Class:</b> ${adm.cls}<br>
+    <b>Board:</b> ${adm.board}<br>
+    <b>Mobile:</b> ${adm.phone}<br>
+    <b>Admission No:</b> <b>${adm.admissionNo}</b><br>
+  `;
 
   const studentID = "BCC-" + adm.admissionNo.replace("ADM-","");
 
-  $("cardName").textContent = adm.name;
-  $("cardBoard").textContent = adm.board;
-  $("cardClass").textContent = adm.cls;
-  $("cardPhone").textContent = adm.phone;
-  $("cardEmail").textContent = adm.email;
-  $("cardAdmNo").textContent = adm.admissionNo;
-  $("cardID").textContent = studentID;
+  $("sCardName").textContent = adm.name;
+  $("sCardBoard").textContent = adm.board;
+  $("sCardClass").textContent = adm.cls;
+  $("sCardPhone").textContent = adm.phone;
+  $("sCardEmail").textContent = adm.email;
+  $("sCardAdmNo").textContent = adm.admissionNo;
+  $("sCardID").textContent = studentID;
 
   const qrData =
     "Bright Career Classes | Verified Student\n" +
@@ -813,13 +643,14 @@ function refreshAccount(){
     "Phone: " + adm.phone + "\n" +
     "Email: " + adm.email;
 
-  $("qrBox").innerHTML="";
-  new QRCode($("qrBox"), {text: qrData, width:100, height:100});
-  $("idCardWrap").style.display="block";
+  $("sQrBox").innerHTML="";
+  new QRCode($("sQrBox"), {text: qrData, width:100, height:100});
+
+  $("statusIdCardWrap").style.display="block";
 }
 
-function downloadIDCardPNG(){
-  const node = $("idCard");
+function downloadStatusIDCardPNG(){
+  const node = $("statusIdCard");
   html2canvas(node,{scale:2}).then(canvas=>{
     const link=document.createElement("a");
     link.download="BCC_IDCard.png";
@@ -828,67 +659,20 @@ function downloadIDCardPNG(){
   });
 }
 
-function openWhatsappWithID(){
-  const userId = getSession();
-  if(!userId){ alert("Login first"); return; }
-  const adm = getMyAdmission(userId);
-  if(!adm || adm.status!=="APPROVED"){ alert("❌ Admin approval required"); return; }
-
-  const studentID = "BCC-" + adm.admissionNo.replace("ADM-","");
-
-  let msg =
-    "✅ *Bright Career Classes - Verified Student*%0A%0A" +
-    "🆔 Admission No: *" + adm.admissionNo + "*%0A" +
-    "🪪 Student ID: *" + studentID + "*%0A%0A" +
-    "👤 Name: " + adm.name + "%0A" +
-    "🏫 Board: " + adm.board + "%0A" +
-    "📚 Class: " + adm.cls + "%0A" +
-    "📞 Phone: " + adm.phone + "%0A" +
-    "✉️ Email: " + adm.email + "%0A%0A" +
-    "✅ ID Card image downloaded. Attach & send ✅";
-
-  downloadIDCardPNG();
-  window.open("https://wa.me/919140466780?text=" + msg, "_blank");
-}
-
-/* UI refresh */
-function showMainSections(isLoggedIn){
-  ["home","about","admission","myAccount"].forEach(id=>{
-    $(id).classList.toggle("hidden", !isLoggedIn);
+/* Direct Access */
+function showMainSections(){
+  ["home","about","admission","statusCheck"].forEach(id=>{
+    $(id).classList.remove("hidden");
   });
-  $("callBtn").classList.toggle("hidden", !isLoggedIn);
-  $("waBtn").classList.toggle("hidden", !isLoggedIn);
+
+  $("callBtn").classList.remove("hidden");
+  $("waBtn").classList.remove("hidden");
 }
 
-function refreshUI(){
-  const userId = getSession();
-  const loggedIn = !!userId;
-
-  $("authBox").classList.toggle("hidden", loggedIn);
-  $("authHiddenHint").classList.toggle("hidden", !loggedIn);
-
-  showMainSections(loggedIn);
-
-  if(loggedIn){ refreshAccount(); }
-  else{
-    $("admissionStatusText").className="pill red";
-    $("admissionStatusText").textContent="Not Submitted";
-  }
-
-  // ✅ Student ke liye admin section always hidden
-  $("adminLogin").classList.add("hidden");
-
-  // ✅ Secret Admin button only admin session me show
-  $("secretAdminBtn").style.display = "block";
-
-
-  refreshAdmin();
-}
-
-refreshUI();
+/* Start */
+showMainSections();
+location.href="#home";
 </script>
 
 </body>
 </html>
-
-
