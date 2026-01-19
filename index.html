@@ -876,7 +876,8 @@ function refreshUI(){
   $("adminLogin").classList.add("hidden");
 
   // ✅ Secret Admin button only admin session me show
-  $("secretAdminBtn").style.display = isAdmin() ? "block" : "none";
+  $("secretAdminBtn").style.display = "block";
+
 
   refreshAdmin();
 }
@@ -886,3 +887,4 @@ refreshUI();
 
 </body>
 </html>
+
