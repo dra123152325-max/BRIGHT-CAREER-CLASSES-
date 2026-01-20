@@ -5,30 +5,20 @@
 <title>Bright Career Classes</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- ✅ Google Search Console Verification -->
 <meta name="google-site-verification" content="TWdW0gvrW6T77Qodr3lPEdWIVcW7qwqUvINv-kl6fJU" />
 
-<!-- ✅ Favicon -->
 <link rel="icon" type="image/png" href="favicon.png?v=2">
 <link rel="apple-touch-icon" href="favicon.png?v=2">
 
-<!-- ✅ Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
   html{scroll-behavior:smooth}
-  body{
-    margin:0;font-family:'Poppins',Arial,sans-serif;background:#f4f6fb;position:relative;
-  }
+  body{margin:0;font-family:'Poppins',Arial,sans-serif;background:#f4f6fb;position:relative;}
   body::before{
-    content:"";position:fixed;inset:0;
-    background-image:url("bcc.png");
-    background-repeat:repeat;
-    background-size:300px 300px;
-    background-position:center;
-    opacity:.025;
-    z-index:-1;
-    pointer-events:none;
+    content:"";position:fixed;inset:0;background-image:url("bcc.png");
+    background-repeat:repeat;background-size:300px 300px;background-position:center;
+    opacity:.025;z-index:-1;pointer-events:none;
   }
 
   header{
@@ -53,10 +43,7 @@
     position:absolute;right:12px;top:70px;background:#fff;width:260px;
     box-shadow:0 0 10px rgba(0,0,0,.25);display:none;z-index:999;border-radius:12px;overflow:hidden
   }
-  .dropdown a{
-    display:block;padding:12px;text-decoration:none;color:#222;
-    border-bottom:1px solid #eee;font-weight:700
-  }
+  .dropdown a{display:block;padding:12px;text-decoration:none;color:#222;border-bottom:1px solid #eee;font-weight:700}
   .dropdown a:hover{background:#f3f3f3}
 
   section{padding:20px}
@@ -76,9 +63,7 @@
     width:100%;padding:11px;margin:8px 0;font-size:16px;
     border-radius:10px;border:1px solid #ddd;box-sizing:border-box
   }
-  button{
-    background:#0b3c5d;color:#fff;border:none;cursor:pointer;font-weight:800;border-radius:10px
-  }
+  button{background:#0b3c5d;color:#fff;border:none;cursor:pointer;font-weight:800;border-radius:10px}
   button:hover{background:#09314b}
   .small-btn{background:#1c6ea4}
   .small-btn:hover{background:#144e75}
@@ -86,6 +71,20 @@
   .danger-btn:hover{background:#c0392b}
   .muted{color:#666;font-size:14px}
   .hidden{display:none !important}
+
+  .pill{
+    display:inline-block;padding:7px 12px;border-radius:999px;font-weight:800;font-size:13px;
+    border:1px solid #e6eef7;background:#f7f9fc;color:#0b3c5d;
+  }
+  .pill.green{background:#eaf7ee;border-color:#cfe9d7;color:#1a7f37}
+  .pill.red{background:#ffeceb;border-color:#ffd0cb;color:#b72212}
+
+  .quick-nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px}
+  .quick-nav a{
+    padding:10px 16px;background:#0b3c5d;color:#fff;border-radius:12px;text-decoration:none;
+    font-weight:800;transition:.2s;
+  }
+  .quick-nav a:hover{transform:scale(1.03);background:#09314b}
 
   .social-box{text-align:center;margin-top:15px}
   .social-box h3{color:#0b3c5d;margin-bottom:12px}
@@ -102,32 +101,22 @@
   .social-link .icon img{width:28px;height:28px;object-fit:contain;display:block}
   .social-link:hover{transform:scale(1.02)}
 
-  .quick-nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px}
-  .quick-nav a{
-    padding:10px 16px;background:#0b3c5d;color:#fff;border-radius:12px;text-decoration:none;
-    font-weight:800;transition:.2s;
+  /* Filter buttons */
+  .filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .fbtn{
+    width:auto; padding:10px 12px; border-radius:12px;
+    background:#f1f6fb; color:#0b3c5d; border:1px solid #dbe8f6;
+    font-weight:900; cursor:pointer;
   }
-  .quick-nav a:hover{transform:scale(1.03);background:#09314b}
-
-  .pill{
-    display:inline-block;padding:7px 12px;border-radius:999px;font-weight:800;font-size:13px;
-    border:1px solid #e6eef7;background:#f7f9fc;color:#0b3c5d;
-  }
-  .pill.green{background:#eaf7ee;border-color:#cfe9d7;color:#1a7f37}
-  .pill.red{background:#ffeceb;border-color:#ffd0cb;color:#b72212}
+  .fbtn.active{background:#0b3c5d;color:#fff;border-color:#0b3c5d}
 
   /* ID CARD */
-  .idcard-wrap{
-    display:none;margin-top:15px;padding:16px;border-radius:16px;background:#f7f9fc;border:1px solid #e6eef7;
-  }
+  .idcard-wrap{display:none;margin-top:15px;padding:16px;border-radius:16px;background:#f7f9fc;border:1px solid #e6eef7;}
   .idcard{
     width:100%;max-width:420px;margin:0 auto;border-radius:18px;overflow:hidden;background:#fff;
     border:1px solid rgba(0,0,0,0.08);box-shadow:0 14px 30px rgba(0,0,0,0.10);
   }
-  .id-top{
-    background:linear-gradient(90deg,#0b3c5d,#1c6ea4);
-    padding:14px;color:#fff;display:flex;gap:12px;align-items:center;
-  }
+  .id-top{background:linear-gradient(90deg,#0b3c5d,#1c6ea4);padding:14px;color:#fff;display:flex;gap:12px;align-items:center;}
   .id-top img{width:52px;height:52px;border-radius:14px;background:#fff;padding:4px}
   .id-top .t1{font-weight:900;font-size:16px;line-height:1.1}
   .id-top .t2{font-size:12px;opacity:.95;margin-top:3px}
@@ -198,14 +187,15 @@
     <a href="#about" onclick="closeMenu()">ℹ About</a>
     <a href="#admission" onclick="closeMenu()">📝 Admission</a>
     <a href="#statusCheck" onclick="closeMenu()">✅ Status Check</a>
-    <a href="#adminLogin" onclick="closeMenu()">⚙ Admin</a>
   </div>
 </header>
 
 <!-- ✅ HOME -->
-<section id="home" class="hidden">
+<section id="home">
   <div class="card">
-    <div class="big-title">Welcome to Bright Career Classes</div>
+    <div class="big-title" onclick="secretAdminTap()">
+      Welcome to Bright Career Classes
+    </div>
 
     <div class="moti">
       ✅ “Dream Big. Work Hard. Achieve Excellence.”<br>
@@ -221,7 +211,6 @@
     <div class="quick-nav">
       <a href="#admission">📝 Admission</a>
       <a href="#statusCheck">✅ Status Check</a>
-      <a href="#adminLogin">⚙ Admin</a>
     </div>
 
     <hr>
@@ -249,7 +238,7 @@
 </section>
 
 <!-- ✅ ABOUT -->
-<section id="about" class="hidden">
+<section id="about">
   <div class="card">
     <h2>About Our Classes</h2>
 
@@ -275,7 +264,7 @@
 </section>
 
 <!-- ✅ ADMISSION -->
-<section id="admission" class="hidden">
+<section id="admission">
   <div class="card">
     <h2>Admission Form</h2>
     <p class="muted">✅ Submit admission request → Admin approval required</p>
@@ -294,8 +283,7 @@
       <option>9</option><option>10</option><option>11</option><option>12</option>
     </select>
 
-    <input id="sphone" type="tel" inputmode="numeric" pattern="[0-9]{10}" maxlength="10"
-           placeholder="Mobile Number (10 digits)"
+    <input id="sphone" maxlength="10" placeholder="Mobile Number (10 digits)"
            oninput="this.value=this.value.replace(/[^0-9]/g,'');">
 
     <input id="semail" placeholder="Email (example@gmail.com)">
@@ -305,13 +293,13 @@
 
     <div class="card" style="background:#f7f9fc;border:1px solid #e6eef7;box-shadow:none;">
       <b>Status:</b> <span id="admissionStatusText" class="pill red">Not Submitted</span>
-      <div class="muted" style="margin-top:6px;">✅Admission No. + Eid Card will be generated only after Admin approves it.</div>
+      <div class="muted" style="margin-top:6px;">✅ Admin approve karega tabhi Admission No + ID Card banega</div>
     </div>
   </div>
 </section>
 
 <!-- ✅ STATUS CHECK -->
-<section id="statusCheck" class="hidden">
+<section id="statusCheck">
   <div class="card">
     <h2>✅ Check Admission Status</h2>
     <p class="muted">Enter your Mobile Number to check your admission approval + ID Card.</p>
@@ -365,13 +353,18 @@
   </div>
 </section>
 
-<!-- ✅ ADMIN -->
+<!-- ✅ ADMIN (Hidden) -->
 <section id="adminLogin" class="hidden">
   <div class="card">
     <h2>⚙ Admin Login</h2>
-    <p class="muted">✅ Only Admin can approve admission</p>
+    <p class="muted">✅ Open admin by tapping Home title 7 times</p>
 
     <input id="adminPass" type="password" placeholder="Admin Password">
+
+    <input id="adminPin" type="password" maxlength="4"
+      placeholder="4 Digit Admin PIN"
+      oninput="this.value=this.value.replace(/[^0-9]/g,'');">
+
     <button onclick="adminLogin()">Login as Admin</button>
 
     <div id="adminPanel" class="hidden">
@@ -380,16 +373,28 @@
       <button class="danger-btn" onclick="adminLogout()">Logout Admin</button>
 
       <hr>
-      <h3 style="color:#0b3c5d;margin-bottom:6px;">Admissions (Serial Wise)</h3>
-      <div class="muted">✅ Pending requests ko approve karo</div>
+      <h3 style="color:#0b3c5d;margin-bottom:6px;">Admissions</h3>
+      <div class="muted">✅ Search + Filter + Approve/Reject/Delete</div>
+
+      <!-- ✅ Search -->
+      <input id="adminSearch" placeholder="🔍 Search by Name / Phone / Class / Board / Status / AdmNo"
+        oninput="renderAdminAdmissions()">
+
+      <!-- ✅ Filters -->
+      <div class="filter-row">
+        <button class="fbtn active" id="fAll" onclick="setAdminFilter('ALL')">All</button>
+        <button class="fbtn" id="fPending" onclick="setAdminFilter('PENDING')">Pending</button>
+        <button class="fbtn" id="fApproved" onclick="setAdminFilter('APPROVED')">Approved</button>
+        <button class="fbtn" id="fRejected" onclick="setAdminFilter('REJECTED')">Rejected</button>
+      </div>
 
       <div id="adminAdmissionsList" style="margin-top:10px;">No admissions yet.</div>
     </div>
   </div>
 </section>
 
-<a class="call-float hidden" id="callBtn" href="tel:+919140466780">📞 Call Us</a>
-<a class="whatsapp-float-right pulse hidden" id="waBtn" target="_blank"
+<a class="call-float" id="callBtn" href="tel:+919140466780">📞 Call Us</a>
+<a class="whatsapp-float-right pulse" id="waBtn" target="_blank"
    href="https://wa.me/919140466780?text=Hello%20Bright%20Career%20Classes,%20I%20want%20admission">
   <img src="watsapp.png" alt="WhatsApp">
   <span>Admission on WhatsApp</span> 💬
@@ -399,6 +404,7 @@
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
 <script>
+/* MENU */
 function toggleMenu(){
   const m = document.getElementById("menu");
   m.style.display = (m.style.display === "block") ? "none" : "block";
@@ -434,7 +440,7 @@ function makeAdmissionNo(){
   return "ADM-" + num;
 }
 
-/* Admission Submit */
+/* ✅ Admission Submit */
 function submitAdmission(){
   const name = $("sname").value.trim();
   const board = $("sboard").value.trim();
@@ -452,7 +458,6 @@ function submitAdmission(){
 
   let all = getAdmissions();
 
-  // ✅ duplicate submit check
   if(all.some(a => a.phone === phone)){
     alert("✅ This mobile number already submitted admission request.");
     return;
@@ -489,20 +494,49 @@ function submitAdmission(){
   window.open("https://wa.me/919140466780?text=" + msg, "_blank");
 }
 
-/* Admin */
-let ADMIN_PASSWORD = "amit6204";
+/* ✅ SECRET 7 TAP ADMIN OPEN */
+let __tapCount = 0;
+let __tapTimer = null;
+
+function secretAdminTap(){
+  __tapCount++;
+  clearTimeout(__tapTimer);
+  __tapTimer = setTimeout(()=>{ __tapCount = 0; }, 1500);
+
+  if(__tapCount >= 7){
+    __tapCount = 0;
+    openAdminLogin();
+  }
+}
+
+function openAdminLogin(){
+  $("adminLogin").classList.remove("hidden");
+  setTimeout(()=>{ location.href="#adminLogin"; }, 150);
+}
+
+/* ✅ Admin Security */
+let ADMIN_PASSWORD = "amit6204";  // change if you want
+let ADMIN_PIN = "7860";           // change if you want
 
 function adminLogin(){
   const pass = $("adminPass").value.trim();
-  if(pass === ADMIN_PASSWORD){
-    localStorage.setItem("bcc_admin_session","1");
-    alert("✅ Admin login successful");
-    refreshAdmin();
-    location.href="#home";
-  }else{
+  const pin  = $("adminPin").value.trim();
+
+  if(pass !== ADMIN_PASSWORD){
     alert("❌ Wrong admin password");
+    return;
   }
+  if(pin !== ADMIN_PIN){
+    alert("❌ Wrong Admin PIN");
+    return;
+  }
+
+  localStorage.setItem("bcc_admin_session","1");
+  alert("✅ Admin login successful");
+  refreshAdmin();
+  location.href="#home";
 }
+
 function adminLogout(){
   localStorage.removeItem("bcc_admin_session");
   alert("Admin logged out ✅");
@@ -511,6 +545,7 @@ function adminLogout(){
 }
 function isAdmin(){ return localStorage.getItem("bcc_admin_session")==="1"; }
 
+/* ✅ Admin Approve/Reject/Delete */
 function approveAdmission(serial){
   if(!isAdmin()){ alert("❌ Admin not logged in"); return; }
 
@@ -536,10 +571,81 @@ function approveAdmission(serial){
     "📚 Class: " + a.cls + "%0A" +
     "🏫 Board: " + a.board + "%0A" +
     "📞 Phone: " + a.phone + "%0A%0A" +
-    "✅ Student status check page me ID Card available.";
+    "✅ Status check page me ID Card available.";
 
   window.open("https://wa.me/919140466780?text=" + msg, "_blank");
   refreshAdmin();
+}
+
+function rejectAdmission(serial){
+  if(!isAdmin()){ alert("❌ Admin not logged in"); return; }
+
+  let all = getAdmissions();
+  const idx = all.findIndex(a => a.serial === serial);
+  if(idx === -1){ alert("Not found"); return; }
+
+  if(all[idx].status === "APPROVED"){
+    alert("❌ Approved admission reject nahi kar sakte. (Delete karo agar zarurat ho)");
+    return;
+  }
+
+  if(!confirm("❌ Reject this admission request?")) return;
+
+  all[idx].status = "REJECTED";
+  all[idx].admissionNo = "";
+  setAdmissions(all);
+
+  alert("✅ Rejected successfully");
+
+  const a = all[idx];
+  let msg =
+    "❌ *Admission REJECTED*%0A%0A" +
+    "S.No: " + a.serial + "%0A" +
+    "👤 Name: " + a.name + "%0A" +
+    "📞 Phone: " + a.phone + "%0A%0A" +
+    "Please contact Bright Career Classes for details.";
+
+  window.open("https://wa.me/919140466780?text=" + msg, "_blank");
+
+  refreshAdmin();
+}
+
+function deleteAdmission(serial){
+  if(!isAdmin()){ alert("❌ Admin not logged in"); return; }
+
+  let all = getAdmissions();
+  const idx = all.findIndex(a => a.serial === serial);
+  if(idx === -1){ alert("Not found"); return; }
+
+  if(!confirm("🗑 Delete this admission permanently?")) return;
+
+  all.splice(idx, 1);
+
+  // ✅ Re-assign serial numbers
+  all = all.map((a,i)=> ({...a, serial:i+1}));
+
+  setAdmissions(all);
+
+  alert("🗑 Deleted successfully");
+  refreshAdmin();
+}
+
+/* ✅ Admin Search + Filter */
+let __adminFilter = "ALL";
+
+function setAdminFilter(type){
+  __adminFilter = type;
+
+  ["fAll","fPending","fApproved","fRejected"].forEach(id=>{
+    $(id).classList.remove("active");
+  });
+
+  if(type==="ALL") $("fAll").classList.add("active");
+  if(type==="PENDING") $("fPending").classList.add("active");
+  if(type==="APPROVED") $("fApproved").classList.add("active");
+  if(type==="REJECTED") $("fRejected").classList.add("active");
+
+  renderAdminAdmissions();
 }
 
 function refreshAdmin(){
@@ -547,22 +653,45 @@ function refreshAdmin(){
   if(isAdmin()){
     panel.classList.remove("hidden");
     renderAdminAdmissions();
-    $("adminLogin").classList.remove("hidden");
   }else{
     panel.classList.add("hidden");
-    $("adminLogin").classList.add("hidden");
   }
 }
 
 function renderAdminAdmissions(){
   const all = getAdmissions();
-  if(all.length===0){ $("adminAdmissionsList").innerHTML="No admissions yet."; return; }
+  const q = ($("adminSearch")?.value || "").trim().toLowerCase();
+
+  let list = all;
+
+  // ✅ Filter status
+  if(__adminFilter !== "ALL"){
+    list = list.filter(a => (a.status || "") === __adminFilter);
+  }
+
+  // ✅ Search filter
+  if(q){
+    list = list.filter(a =>
+      (a.name || "").toLowerCase().includes(q) ||
+      (a.phone || "").includes(q) ||
+      (a.cls || "").toString().toLowerCase().includes(q) ||
+      (a.board || "").toLowerCase().includes(q) ||
+      (a.status || "").toLowerCase().includes(q) ||
+      (a.admissionNo || "").toLowerCase().includes(q)
+    );
+  }
+
+  if(list.length===0){
+    $("adminAdmissionsList").innerHTML = `<div class="muted">No matching admissions found.</div>`;
+    return;
+  }
 
   let html="";
-  all.forEach(a=>{
-    const pill = a.status==="APPROVED"
-      ? `<span class="pill green">APPROVED</span>`
-      : `<span class="pill red">PENDING</span>`;
+  list.forEach(a=>{
+    let pill = `<span class="pill red">${a.status || "PENDING"}</span>`;
+    if(a.status==="APPROVED") pill = `<span class="pill green">APPROVED</span>`;
+    if(a.status==="REJECTED") pill = `<span class="pill red">REJECTED</span>`;
+
     html += `
       <div style="border:1px solid #eee;padding:12px;border-radius:14px;margin:10px 0;background:#fff;">
         <b>${a.serial}. ${a.name}</b> ${pill}<br>
@@ -571,16 +700,24 @@ function renderAdminAdmissions(){
         Email: ${a.email}<br>
         Admission No: <b>${a.admissionNo ? a.admissionNo : "-"}</b><br>
         <small style="color:#666;">${a.time}</small><br><br>
+
         ${a.status==="PENDING"
-          ? `<button class="small-btn" onclick="approveAdmission(${a.serial})">✅ Approve</button>`
-          : `<button disabled style="opacity:.6;cursor:not-allowed;">Already Approved</button>`
+          ? `
+            <button class="small-btn" onclick="approveAdmission(${a.serial})">✅ Approve</button>
+            <button class="danger-btn" onclick="rejectAdmission(${a.serial})">❌ Reject</button>
+            <button class="danger-btn" onclick="deleteAdmission(${a.serial})">🗑 Delete</button>
+          `
+          : `
+            <button class="danger-btn" onclick="deleteAdmission(${a.serial})">🗑 Delete</button>
+          `
         }
       </div>`;
   });
+
   $("adminAdmissionsList").innerHTML=html;
 }
 
-/* Status Check */
+/* ✅ Status Check */
 function checkStatus(){
   const phone = $("checkPhone").value.trim();
 
@@ -598,6 +735,18 @@ function checkStatus(){
     $("statusResult").innerHTML = `
       <span class="pill red">❌ Not Found</span><br><br>
       No admission request found for this number: <b>${phone}</b>`;
+    $("statusIdCardWrap").style.display="none";
+    return;
+  }
+
+  if(adm.status === "REJECTED"){
+    $("statusResult").innerHTML = `
+      <span class="pill red">❌ Rejected</span><br><br>
+      <b>Name:</b> ${adm.name}<br>
+      <b>Class:</b> ${adm.cls}<br>
+      <b>Board:</b> ${adm.board}<br>
+      <b>Mobile:</b> ${adm.phone}<br><br>
+      ❌ Your admission request was rejected. Please contact admin.`;
     $("statusIdCardWrap").style.display="none";
     return;
   }
@@ -659,21 +808,10 @@ function downloadStatusIDCardPNG(){
   });
 }
 
-/* Direct Access */
-function showMainSections(){
-  ["home","about","admission","statusCheck"].forEach(id=>{
-    $(id).classList.remove("hidden");
-  });
-
-  $("callBtn").classList.remove("hidden");
-  $("waBtn").classList.remove("hidden");
-}
-
 /* Start */
-showMainSections();
-location.href="#home";
+refreshAdmin();
+setAdminFilter("ALL");
 </script>
 
 </body>
 </html>
-
