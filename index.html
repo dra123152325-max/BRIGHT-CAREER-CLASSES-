@@ -56,7 +56,7 @@
     transition:.25s;
   }
   .card:hover{transform:translateY(-4px)}
-  .big-title{font-size:28px;font-weight:800;text-align:center;color:#0b3c5d}
+  .big-title{font-size:28px;font-weight:800;text-align:center;color:#0b3c5d;user-select:none;cursor:pointer}
   .moti{text-align:center;font-size:18px;margin-top:10px;line-height:1.7}
 
   input,select,textarea,button{
@@ -357,7 +357,7 @@
 <section id="adminLogin" class="hidden">
   <div class="card">
     <h2>⚙ Admin Login</h2>
-    <p class="muted">✅ Open admin by tapping Home title 7 times</p>
+    <p class="muted">✅ Phone: tap Home title 7 times (10 sec) | Laptop: CTRL + SHIFT + A</p>
 
     <input id="adminPass" type="password" placeholder="Admin Password">
 
@@ -376,11 +376,9 @@
       <h3 style="color:#0b3c5d;margin-bottom:6px;">Admissions</h3>
       <div class="muted">✅ Search + Filter + Approve/Reject/Delete</div>
 
-      <!-- ✅ Search -->
       <input id="adminSearch" placeholder="🔍 Search by Name / Phone / Class / Board / Status / AdmNo"
         oninput="renderAdminAdmissions()">
 
-      <!-- ✅ Filters -->
       <div class="filter-row">
         <button class="fbtn active" id="fAll" onclick="setAdminFilter('ALL')">All</button>
         <button class="fbtn" id="fPending" onclick="setAdminFilter('PENDING')">Pending</button>
@@ -457,7 +455,6 @@ function submitAdmission(){
   if(!isValidEmail(email)){ alert("❌ Enter valid email"); return; }
 
   let all = getAdmissions();
-
   if(all.some(a => a.phone === phone)){
     alert("✅ This mobile number already submitted admission request.");
     return;
@@ -494,14 +491,21 @@ function submitAdmission(){
   window.open("https://wa.me/919140466780?text=" + msg, "_blank");
 }
 
-/* ✅ SECRET 7 TAP ADMIN OPEN */
+/* ✅ ADMIN OPEN SYSTEM (Phone + Laptop Shortcut) */
 let __tapCount = 0;
 let __tapTimer = null;
 
+function openAdminLogin(){
+  $("adminLogin").classList.remove("hidden");
+  closeMenu();
+  setTimeout(()=>{ location.href="#adminLogin"; }, 150);
+}
+
+// 📱 Phone: 7 tap within 10 sec
 function secretAdminTap(){
   __tapCount++;
   clearTimeout(__tapTimer);
-  __tapTimer = setTimeout(()=>{ __tapCount = 0; }, 1500);
+  __tapTimer = setTimeout(()=>{ __tapCount = 0; }, 10000);
 
   if(__tapCount >= 7){
     __tapCount = 0;
@@ -509,14 +513,16 @@ function secretAdminTap(){
   }
 }
 
-function openAdminLogin(){
-  $("adminLogin").classList.remove("hidden");
-  setTimeout(()=>{ location.href="#adminLogin"; }, 150);
-}
+// 💻 Laptop: CTRL + SHIFT + A
+document.addEventListener("keydown", function(e){
+  if(e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "a"){
+    openAdminLogin();
+  }
+});
 
 /* ✅ Admin Security */
-let ADMIN_PASSWORD = "amit6204";  // change if you want
-let ADMIN_PIN = "7860";           // change if you want
+let ADMIN_PASSWORD = "amit6204";
+let ADMIN_PIN = "7860";
 
 function adminLogin(){
   const pass = $("adminPass").value.trim();
@@ -543,6 +549,7 @@ function adminLogout(){
   refreshAdmin();
   location.href="#home";
 }
+
 function isAdmin(){ return localStorage.getItem("bcc_admin_session")==="1"; }
 
 /* ✅ Admin Approve/Reject/Delete */
@@ -596,17 +603,6 @@ function rejectAdmission(serial){
   setAdmissions(all);
 
   alert("✅ Rejected successfully");
-
-  const a = all[idx];
-  let msg =
-    "❌ *Admission REJECTED*%0A%0A" +
-    "S.No: " + a.serial + "%0A" +
-    "👤 Name: " + a.name + "%0A" +
-    "📞 Phone: " + a.phone + "%0A%0A" +
-    "Please contact Bright Career Classes for details.";
-
-  window.open("https://wa.me/919140466780?text=" + msg, "_blank");
-
   refreshAdmin();
 }
 
@@ -621,9 +617,7 @@ function deleteAdmission(serial){
 
   all.splice(idx, 1);
 
-  // ✅ Re-assign serial numbers
   all = all.map((a,i)=> ({...a, serial:i+1}));
-
   setAdmissions(all);
 
   alert("🗑 Deleted successfully");
@@ -664,12 +658,10 @@ function renderAdminAdmissions(){
 
   let list = all;
 
-  // ✅ Filter status
   if(__adminFilter !== "ALL"){
     list = list.filter(a => (a.status || "") === __adminFilter);
   }
 
-  // ✅ Search filter
   if(q){
     list = list.filter(a =>
       (a.name || "").toLowerCase().includes(q) ||
